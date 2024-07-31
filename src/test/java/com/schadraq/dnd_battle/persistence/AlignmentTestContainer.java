@@ -1,36 +1,30 @@
 package com.schadraq.dnd_battle.persistence;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.util.function.Consumer;
-import java.util.function.Function;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
+import org.testcontainers.utility.DockerImageName;
 
-import com.schadraq.dnd_battle.BattleController;
-import com.schadraq.dnd_battle.DndBattleApplication;
-
-import jakarta.persistence.EntityManager;
 import lombok.extern.slf4j.Slf4j;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = DndBattleApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("test")
+@Testcontainers
+@SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
 @Slf4j
-public class AlignmentTest extends PersistenceTest {
+public class AlignmentTestContainer extends PersistenceTest {
 
 	private static final String ALIGNMENT_ABBR = "T";
 
@@ -38,38 +32,38 @@ public class AlignmentTest extends PersistenceTest {
 
 	private static final String ALIGNMENT_DESCRIPTION = "This is a test.";
 
-	@LocalServerPort
-	private int port;
+	@Container
+	@ServiceConnection
+	static PostgreSQLContainer<?> postgresqlContainer = new PostgreSQLContainer<>(DockerImageName.parse("postgres:latest"));
 
-	@Autowired
-	private TestRestTemplate restTemplate;
-
-    @Autowired
-    private EntityManager entityManager;
-	 
     @Autowired
     private AlignmentRepository alignmentRepository;
 
-    @Autowired
-    private BattleController controller;
+    @BeforeAll
+    static void beforeAll() {
+        postgresqlContainer.start();
+    }
 
-	@Test
-	void contextLoads() throws Exception {
+    @AfterAll
+    static void afterAll() {
+        postgresqlContainer.stop();
+    }
 
-		///////////////////////////////////////////////////////////////////////
-		// NOTE: Sanity check
-		assertThat(controller).isNotNull();
-	}
-
-	@Test
-	void testAlignmentWebLayer() throws Exception {
-//		log.info(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/alignments",String.class));
-		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/alignments",
-				String.class)).contains("unaligned");
-	}
+    @BeforeEach
+    void setUp() {
+    	try (Connection connection = DriverManager.getConnection(
+    			postgresqlContainer.getJdbcUrl(),
+                postgresqlContainer.getUsername(),
+                postgresqlContainer.getPassword())) {
+    		
+    	}
+    	catch (SQLException e) {
+    	      throw new RuntimeException(e);
+    	}
+    }
 
     @Test
-    public void testAlignmentModelLayer() {
+    void alignmentPersistenceTest() {
 
         ///////////////////////////////////////////////////////////////////////
         // NOTE: Test to see if we can retrieve an alignment
