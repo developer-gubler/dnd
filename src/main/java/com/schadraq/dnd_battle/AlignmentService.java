@@ -14,7 +14,7 @@ public class AlignmentService {
 	@Autowired
 	private AlignmentRepository repo;
 	
-	public List<Alignment> gettAlignments() {
+	public List<Alignment> getAlignments() {
 		return repo.findAll();
 	}
 }

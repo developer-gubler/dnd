@@ -1,47 +1,46 @@
 package com.schadraq.dnd_battle.persistence;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.containsString;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.schadraq.dnd_battle.BattleController;
 import com.schadraq.dnd_battle.DndBattleApplication;
 
-import jakarta.persistence.EntityManager;
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * NOTE: It is important to update the application-test.properties to leverage
  * 		 the H2 settings and comment out thePostgreSQL  settings.
  * 
- * NOTE: This test class starts the web server and processes the request just
- * like a normal request would. Tomcat can be seen to be started in the console
- * log.
+ * NOTE: This test class does NOT start the web server and processes the
+ * request just like a normal request would. Tomcat will be absent in the
+ * console log.
+ * 
+ * NOTE: This is probably my favorite style of testing.
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = DndBattleApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)	//  NOTE: tells Spring Boot to look for a main configuration class (one with @SpringBootApplication, for instance) and use that to start a Spring application context
+@SpringBootTest(classes = DndBattleApplication.class)	//  NOTE: tells Spring Boot to look for a main configuration class (one with @SpringBootApplication, for instance) and use that to start a Spring application context
+@AutoConfigureMockMvc
 @ActiveProfiles("test")
 @Slf4j
-public class AlignmentTest extends PersistenceTest {
-
-	@LocalServerPort
-	private int port;
+public class AlignmentMockMvcTest extends PersistenceTest {
 
 	@Autowired
-	private TestRestTemplate restTemplate;
-
-    @Autowired
-    private EntityManager entityManager;
+	private MockMvc mockMvc;
 
     @Autowired
     private AlignmentRepository alignmentRepository;
@@ -59,9 +58,11 @@ public class AlignmentTest extends PersistenceTest {
 
 	@Test
 	void testAlignmentWebLayer() throws Exception {
-//		log.info(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/alignments",String.class));
-		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/alignments",
-				String.class)).contains("unaligned");
+		this.mockMvc
+			.perform(get("/dnd-battle/alignments"))
+			.andDo(print())
+			.andExpect(status().isOk())
+			.andExpect(content().string(containsString("unaligned")));
 	}
 
     @Test

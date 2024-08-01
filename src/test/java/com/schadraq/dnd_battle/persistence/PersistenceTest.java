@@ -13,6 +13,12 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class PersistenceTest {
 
+	protected static final String ALIGNMENT_ABBR = "T";
+
+	protected static final String ALIGNMENT_NAME = "test";
+
+	protected static final String ALIGNMENT_DESCRIPTION = "This is a test.";
+
     protected <T extends BaseEntity> T createRecord(boolean isExpectedException, JpaRepository<T, Long> repo, T obj) {
 
     	log.info("Insert into database (" + obj.getClass().getName() + ")");
@@ -42,6 +48,7 @@ public class PersistenceTest {
     	found = repo.findById(id);	// NOTE: Do NOT use getById() or getReferenceById() since those retrieve lazily and can easily cause problems.
 
         assertNotNull(found, "Cannot be null");
+        assertEquals(true, found.isPresent(), "Cannot be null");
         assertEquals(id, found.get().getId());
     	f.accept(found.get());
 

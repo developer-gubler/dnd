@@ -18,6 +18,6 @@ public class BattleController {
 	
 	@GetMapping("/alignments")
 	public List<Alignment> getAlignmentList() {
-		return serviceAlignment.gettAlignments();
+		return serviceAlignment.getAlignments();
 	}
 }

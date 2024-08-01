@@ -1,30 +1,38 @@
 package com.schadraq.dnd_battle.persistence;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.springframework.test.context.ActiveProfiles;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
+import com.schadraq.dnd_battle.BattleController;
+
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * NOTE: It is important to update the application-test.properties to leverage
+ * 		 the PostgreSQL settings and comment out the H2 settings.
+ */
 @Testcontainers
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
+@TestMethodOrder(OrderAnnotation.class)			// NOTE: This is important because the results of test 3 are dependent on test 2 having put the value into the database.
+@ActiveProfiles("test")
 @Slf4j
-public class AlignmentTestContainer extends PersistenceTest {
+public class AlignmentContainerTest extends PersistenceTest {
 
 	private static final String ALIGNMENT_ABBR = "T";
 
@@ -34,39 +42,51 @@ public class AlignmentTestContainer extends PersistenceTest {
 
 	@Container
 	@ServiceConnection
-	static PostgreSQLContainer<?> postgresqlContainer = new PostgreSQLContainer<>(DockerImageName.parse("postgres:latest"));
+	private static PostgreSQLContainer<?> postgresqlContainer = new PostgreSQLContainer<>(DockerImageName.parse("postgres:latest"))
+																	.withDatabaseName("dnd-database")
+																	.withUsername("dnd-user")
+																	.withPassword("dnd-secret");
+
+	@LocalServerPort
+	private int port;
+
+	@Autowired
+	private TestRestTemplate restTemplate;
 
     @Autowired
     private AlignmentRepository alignmentRepository;
 
-    @BeforeAll
-    static void beforeAll() {
-        postgresqlContainer.start();
-    }
+    @Autowired
+    private BattleController controller;
 
-    @AfterAll
-    static void afterAll() {
-        postgresqlContainer.stop();
-    }
+	@Test
+	@Order(1)
+	void contextLoads() throws Exception {
 
-    @BeforeEach
-    void setUp() {
-    	try (Connection connection = DriverManager.getConnection(
-    			postgresqlContainer.getJdbcUrl(),
-                postgresqlContainer.getUsername(),
-                postgresqlContainer.getPassword())) {
-    		
-    	}
-    	catch (SQLException e) {
-    	      throw new RuntimeException(e);
-    	}
-    }
+		///////////////////////////////////////////////////////////////////////
+		// NOTE: Sanity check - fail if the application context cannot start
+		assertThat(controller).isNotNull();
+	}
+
+	@Test
+	@Order(2)
+	void testAlignmentWebLayer() throws Exception {
+		Alignment a = createRecord(false, alignmentRepository, new Alignment("unaligned","U","Does not make moral or ethical choices, but rather acts on instinct."));
+		if (a != null) {
+			log.info("name: " + a.getName());
+	    	readRecord(alignmentRepository, a, (found) -> {});
+		}
+		log.info(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/alignments",String.class));
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/alignments",
+				String.class)).contains("unaligned");
+	}
 
     @Test
-    void alignmentPersistenceTest() {
+	@Order(3)
+    void testAlignmentModelLayer() {
 
         ///////////////////////////////////////////////////////////////////////
-        // NOTE: Test to see if we can retrieve an alignment
+        // NOTE: Test the retrieval of the record from previous test.
     	Alignment alignment = readRecord(alignmentRepository, 1L, (found) -> {});
     	if (alignment != null) {
     		log.info("alignment name: " + alignment.getName());
