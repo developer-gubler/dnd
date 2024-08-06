@@ -1,6 +1,8 @@
 package com.schadraq.dnd_battle.persistence;
 
+import java.util.UUID;
+
 public abstract class BaseEntity {
 
-	public abstract Long getId();
+	public abstract UUID getId();
 }
