@@ -33,7 +33,7 @@ import lombok.extern.slf4j.Slf4j;
  * - Processes the request as if there was a web server (ie just like a normal)
  * - All beans are auto-configured for us 
  * 
- * NOTE: This is probably my favorite style of testing.
+ * NOTE: This is probably my second favorite style of testing next to TestContainers.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DndBattleApplication.class)	//  NOTE: tells Spring Boot to look for a main configuration class (one with @SpringBootApplication, for instance) and use that to start a Spring application context

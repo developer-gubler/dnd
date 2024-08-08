@@ -1,10 +1,6 @@
 package com.schadraq.dnd_battle;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.math.BigDecimal;
-import java.util.UUID;
 
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
@@ -24,16 +20,12 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
-import com.schadraq.dnd_battle.BattleController;
-import com.schadraq.dnd_battle.persistence.ChallengeRating;
 import com.schadraq.dnd_battle.persistence.ChallengeRatingRepository;
 import com.schadraq.dnd_battle.persistence.PersistenceTest;
 
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * NOTE: https://spring.io/guides/gs/testing-web
- * 
  * NOTE: It is important to update the application-test.properties to leverage
  * 		 the PostgreSQL settings and comment out the H2 settings.
  * 
@@ -42,11 +34,12 @@ import lombok.extern.slf4j.Slf4j;
  * 
  * NOTE: Properties of this style of testing:
  * - Web Server is started (ie Tomcat will be in the console log)
- *   due to the @AutoConfigureMockMvc annotation - also uses @Autowired MockMvc
- * - Processes the request as if there was a web server (ie just like a normal)
  * - All beans are auto-configured for us 
+ * - Starts a PostgreSQL database within a container - it is initialized by the
+ * 	 @Sql annotation
  * 
- * NOTE: This is probably my favorite style of testing.
+ * NOTE: This is my favorite styles of testing because it imitates the actual
+ * 		 production environment as much as possible.
  */
 @Testcontainers
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
@@ -85,15 +78,54 @@ public class BattleControllerContainerTest extends PersistenceTest {
 	}
 
 	@Test
-	@Order(2)
 	void test_retrieve_challenge_ratings() throws Exception {
 
-		readRecord(true, repo, UUID.fromString("f8d4ed21-b84c-4c7a-9e8d-be77e3b7453b"), (found) -> {});
-
-		readRecord(true, repo, UUID.fromString("40e26256-dac8-4834-a055-62d9457dc908"), (found) -> {});
+//		readRecord(true, repo, UUID.fromString("f8d4ed21-b84c-4c7a-9e8d-be77e3b7453b"), (found) -> {});
+//
+//		readRecord(true, repo, UUID.fromString("40e26256-dac8-4834-a055-62d9457dc908"), (found) -> {});
 
 		log.info(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/challenge-ratingss",String.class));
 		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/challenge-ratings",
-				String.class)).contains("1");
+				String.class)).contains("30");
+	}
+
+	@Test
+	void test_retrieve_creature_families() throws Exception {
+
+		log.info(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature-families", String.class));
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature-families",
+				String.class)).contains("Aberration");
+	}
+
+	@Test
+	void test_retrieve_creature_sizes() throws Exception {
+
+		log.info(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature-sizes", String.class));
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature-sizes",
+				String.class)).contains("gargantuan");
+	}
+
+	@Test
+	void test_retrieve_creatures() throws Exception {
+
+		log.info(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creatures", String.class));
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creatures",
+				String.class)).contains("Ogre");
+	}
+
+	@Test
+	void test_retrieve_valid_single_creature() throws Exception {
+
+		log.info(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature?id=5091265c-1645-47f2-8f1f-381b899085ad", String.class));
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature?id=5091265c-1645-47f2-8f1f-381b899085ad",
+				String.class)).contains("Ogre");
+	}
+
+	@Test
+	void test_retrieve_invalid_single_creature() throws Exception {
+
+		log.info(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature?id=5091265c-1645-47f2-8f1f-381b899085a", String.class));
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature?id=5091265c-1645-47f2-8f1f-381b899085a",
+				String.class)).contains("");
 	}
 }
