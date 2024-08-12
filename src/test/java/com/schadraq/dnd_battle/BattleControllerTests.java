@@ -75,19 +75,19 @@ public class BattleControllerTests {
 
 	@Test
 	void test_retrieve_creatures() throws Exception {
-		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creatures",
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature-templates",
 				String.class)).contains("Ogre");
 	}
 
 	@Test
 	void test_retrieve_valid_single_creature() throws Exception {
-		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature?id=5091265c-1645-47f2-8f1f-381b899085ad",
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature-template?id=5091265c-1645-47f2-8f1f-381b899085ad",
 				String.class)).contains("Ogre");
 	}
 
 	@Test
 	void test_retrieve_invalid_single_creature() throws Exception {
-		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature?id=5091265c-1645-47f2-8f1f-381b899085a",
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature-template?id=5091265c-1645-47f2-8f1f-381b899085a",
 				String.class)).contains("");
 	}
 }

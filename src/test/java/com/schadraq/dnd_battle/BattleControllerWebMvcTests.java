@@ -23,12 +23,12 @@ import java.util.UUID;
 
 import com.schadraq.dnd_battle.persistence.ChallengeRating;
 import com.schadraq.dnd_battle.persistence.ChallengeRatingRepository;
-import com.schadraq.dnd_battle.persistence.Creature;
+import com.schadraq.dnd_battle.persistence.CreatureTemplate;
 import com.schadraq.dnd_battle.persistence.CreatureClassification;
 import com.schadraq.dnd_battle.persistence.CreatureClassificationRepository;
 import com.schadraq.dnd_battle.persistence.CreatureFamily;
 import com.schadraq.dnd_battle.persistence.CreatureFamilyRepository;
-import com.schadraq.dnd_battle.persistence.CreatureRepository;
+import com.schadraq.dnd_battle.persistence.CreatureTemplateRepository;
 import com.schadraq.dnd_battle.persistence.CreatureSize;
 import com.schadraq.dnd_battle.persistence.CreatureSizeRepository;
 
@@ -77,7 +77,7 @@ public class BattleControllerWebMvcTests {
 	private CreatureSizeRepository repoCreatureSize;
 
 	@MockBean
-	private CreatureRepository repoCreature;
+	private CreatureTemplateRepository repoCreature;
 
 	@Test
 	void test_retrieve_challenge_ratings() throws Exception {
@@ -124,14 +124,14 @@ public class BattleControllerWebMvcTests {
 		CreatureClassification classGiant = new CreatureClassification(UUID.fromString("dc575e25-a4aa-4ad8-9dca-0c79aa5e0e67"),"Giant");
 		CreatureFamily familyOrc = new CreatureFamily(UUID.fromString("7f74e64f-f097-41d1-8f4a-d1e2db6bf46f"), classHumanoid, "Orc");
 		CreatureFamily familyGiant = new CreatureFamily(UUID.fromString("60e77f04-3ab2-4494-9469-73c26d2aaad4"), classGiant, "-");
-		Creature orc = new Creature(UUID.fromString("05808cc6-637e-4d49-a396-a6e2af138664"), "Orc", familyOrc, sizeMedium, "CE", (short)30, (short)0, (short)0, (short)0, (short)0,
+		CreatureTemplate orc = new CreatureTemplate(UUID.fromString("05808cc6-637e-4d49-a396-a6e2af138664"), "Orc", familyOrc, sizeMedium, "CE", (short)30, (short)0, (short)0, (short)0, (short)0,
 				(short)16, (short)12, (short)16, (short)9, (short)13, (short)12, (short)15, "2d8 + 6", (short)13, (short)2,
 				crOrc, false, false, false, false, false, false, "none", "none", "none",
 				"none", "none", "none", "none", "proficient", "none", "none", "none", "none", "none",
 				"none", "none", "none", "none", "none", "none", "none", "none", "none", "none",
 				"none", "none", "none", "none", "none", "none", "none", "none", "none", "none",
 				"none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none");
-		Creature ogre = new Creature(UUID.fromString("5091265c-1645-47f2-8f1f-381b899085ad"), "Ogre", familyGiant, sizeLarge, "CE", (short)40, (short)0, (short)0, (short)0, (short)0,
+		CreatureTemplate ogre = new CreatureTemplate(UUID.fromString("5091265c-1645-47f2-8f1f-381b899085ad"), "Ogre", familyGiant, sizeLarge, "CE", (short)40, (short)0, (short)0, (short)0, (short)0,
 				(short)19, (short)8, (short)16, (short)5, (short)7, (short)7, (short)59, "7d10 + 21", (short)11, (short)2,
 				crOgre, false, false, false, false, false, false, "none", "none", "none",
 				"none", "none", "none", "none", "none", "none", "none", "none", "none", "none",
@@ -141,7 +141,7 @@ public class BattleControllerWebMvcTests {
 		when(repoCreature.findAll())
 			.thenReturn(Arrays.asList(orc, ogre));
 		this.mockMvc
-			.perform(get("/dnd-battle/creatures"))
+			.perform(get("/dnd-battle/creature-templates"))
 			.andDo(print())
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Ogre")));
@@ -153,7 +153,7 @@ public class BattleControllerWebMvcTests {
 		CreatureSize sizeLarge = new CreatureSize(UUID.fromString("7ce51487-ad83-49cb-8953-8378fb6d388f"), "large", BigDecimal.valueOf(10));
 		CreatureClassification classGiant = new CreatureClassification(UUID.fromString("dc575e25-a4aa-4ad8-9dca-0c79aa5e0e67"),"Giant");
 		CreatureFamily familyGiant = new CreatureFamily(UUID.fromString("60e77f04-3ab2-4494-9469-73c26d2aaad4"), classGiant, "-");
-		Creature ogre = new Creature(UUID.fromString("5091265c-1645-47f2-8f1f-381b899085ad"), "Ogre", familyGiant, sizeLarge, "CE", (short)40, (short)0, (short)0, (short)0, (short)0,
+		CreatureTemplate ogre = new CreatureTemplate(UUID.fromString("5091265c-1645-47f2-8f1f-381b899085ad"), "Ogre", familyGiant, sizeLarge, "CE", (short)40, (short)0, (short)0, (short)0, (short)0,
 				(short)19, (short)8, (short)16, (short)5, (short)7, (short)7, (short)59, "7d10 + 21", (short)11, (short)2,
 				crOgre, false, false, false, false, false, false, "none", "none", "none",
 				"none", "none", "none", "none", "none", "none", "none", "none", "none", "none",
@@ -163,7 +163,7 @@ public class BattleControllerWebMvcTests {
 		when(repoCreature.findById(UUID.fromString("5091265c-1645-47f2-8f1f-381b899085ad")))
 			.thenReturn(Optional.of(ogre));
 		this.mockMvc
-			.perform(get("/dnd-battle/creature?id=5091265c-1645-47f2-8f1f-381b899085ad"))
+			.perform(get("/dnd-battle/creature-template?id=5091265c-1645-47f2-8f1f-381b899085ad"))
 			.andDo(print())
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Ogre")));

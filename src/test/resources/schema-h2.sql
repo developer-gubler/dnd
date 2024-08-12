@@ -37,7 +37,7 @@ CREATE TYPE alignment_type AS ENUM ('U', 'LG', 'NG', 'CG', 'LN', 'N', 'CN', 'LE'
 
 CREATE TYPE ability_level AS ENUM ('none', 'proficient', 'expertise');
 
-CREATE TABLE IF NOT EXISTS creature
+CREATE TABLE IF NOT EXISTS creature_template
 (
     id uuid primary key,
     name VARCHAR(32) NOT NULL,
@@ -157,14 +157,14 @@ CREATE TABLE IF NOT EXISTS armor
 CREATE TABLE IF NOT EXISTS creature_armor_proficiency
 (
     id uuid primary key,
-    creature_id uuid NOT NULL REFERENCES creature(id),
+    creature_id uuid NOT NULL REFERENCES creature_template(id),
     type armor_type NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS creature_armor_xref
 (
     id uuid primary key,
-    creature_id uuid NOT NULL REFERENCES creature(id),
+    creature_id uuid NOT NULL REFERENCES creature_template(id),
     armor_id uuid NOT NULL REFERENCES armor(id)
 );
 
@@ -199,14 +199,14 @@ CREATE TABLE IF NOT EXISTS weapon
 CREATE TABLE IF NOT EXISTS creature_weapon_proficiency
 (
     id uuid primary key,
-    creature_id uuid NOT NULL REFERENCES creature(id),
+    creature_id uuid NOT NULL REFERENCES creature_template(id),
     weapon_id uuid NOT NULL REFERENCES weapon(id)
 );
 
 CREATE TABLE IF NOT EXISTS creature_weapon_xref
 (
     id uuid primary key,
-    creature_id uuid NOT NULL REFERENCES creature(id),
+    creature_id uuid NOT NULL REFERENCES creature_template(id),
     weapon_id uuid NOT NULL REFERENCES weapon(id)
 );
 

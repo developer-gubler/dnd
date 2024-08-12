@@ -86,7 +86,7 @@ public class BattleControllerMockMvcTests {
 	@Test
 	void test_retrieve_creatures() throws Exception {
 		this.mockMvc
-			.perform(get("/dnd-battle/creatures"))
+			.perform(get("/dnd-battle/creature-templates"))
 			.andDo(print())
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Ogre")));
@@ -95,7 +95,7 @@ public class BattleControllerMockMvcTests {
 	@Test
 	void test_retrieve_valid_single_creature() throws Exception {
 		this.mockMvc
-			.perform(get("/dnd-battle/creature").param("id", "5091265c-1645-47f2-8f1f-381b899085ad"))
+			.perform(get("/dnd-battle/creature-template").param("id", "5091265c-1645-47f2-8f1f-381b899085ad"))
 			.andDo(print())
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("Ogre")));
@@ -104,7 +104,7 @@ public class BattleControllerMockMvcTests {
 	@Test
 	void test_retrieve_invalid_single_creature() throws Exception {
 		this.mockMvc
-			.perform(get("/dnd-battle/creature").param("id", "5091265c-1645-47f2-8f1f-381b899085a"))
+			.perform(get("/dnd-battle/creature-template").param("id", "5091265c-1645-47f2-8f1f-381b899085a"))
 			.andDo(print())
 			.andExpect(status().isOk())
 			.andExpect(content().string(containsString("")));

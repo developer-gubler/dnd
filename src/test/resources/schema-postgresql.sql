@@ -12,7 +12,15 @@ DROP TABLE IF EXISTS armor;
 
 DROP TABLE IF EXISTS language;
 
+DROP TABLE IF EXISTS condition;
+
+DROP TABLE IF EXISTS battle_participant;
+
+DROP TABLE IF EXISTS battle;
+
 DROP TABLE IF EXISTS creature;
+
+DROP TABLE IF EXISTS creature_template;
 
 DROP TABLE IF EXISTS creature_family;
 
@@ -76,7 +84,7 @@ CREATE TYPE alignment_type AS ENUM ('U', 'LG', 'NG', 'CG', 'LN', 'N', 'CN', 'LE'
 
 CREATE TYPE ability_level AS ENUM ('none', 'proficient', 'expertise');
 
-CREATE TABLE IF NOT EXISTS creature
+CREATE TABLE IF NOT EXISTS creature_template
 (
     id uuid primary key,
     name character varying(32) NOT NULL,
@@ -214,7 +222,7 @@ CREATE TABLE IF NOT EXISTS creature_armor_proficiency
     creature_id uuid NOT NULL,
     type armor_type NOT NULL,
     CONSTRAINT fk_creature_armor_proficiency_creature FOREIGN KEY (creature_id)
-        REFERENCES creature (id) MATCH SIMPLE
+        REFERENCES creature_template (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 );
@@ -225,7 +233,7 @@ CREATE TABLE IF NOT EXISTS creature_armor_xref
     creature_id uuid NOT NULL,
     armor_id uuid NOT NULL,
     CONSTRAINT fk_creature_armor_xref_creature FOREIGN KEY (creature_id)
-        REFERENCES creature (id) MATCH SIMPLE
+        REFERENCES creature_template (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
     CONSTRAINT fk_creature_armor_xref_armor FOREIGN KEY (armor_id)
@@ -269,7 +277,7 @@ CREATE TABLE IF NOT EXISTS creature_weapon_proficiency
     creature_id uuid NOT NULL,
     weapon_id uuid NOT NULL,
     CONSTRAINT fk_creature_weapon_proficiency_creature FOREIGN KEY (creature_id)
-        REFERENCES creature (id) MATCH SIMPLE
+        REFERENCES creature_template (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
     CONSTRAINT fk_creature_weapon_proficiency_weapon FOREIGN KEY (weapon_id)
@@ -284,7 +292,7 @@ CREATE TABLE IF NOT EXISTS creature_weapon_xref
     creature_id uuid NOT NULL,
     weapon_id uuid NOT NULL,
     CONSTRAINT fk_creature_weapon_xref_creature FOREIGN KEY (creature_id)
-        REFERENCES creature (id) MATCH SIMPLE
+        REFERENCES creature_template (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
     CONSTRAINT fk_creature_weapon_xref_weapon FOREIGN KEY (weapon_id)

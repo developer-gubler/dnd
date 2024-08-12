@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.schadraq.dnd_battle.persistence.ChallengeRating;
 import com.schadraq.dnd_battle.persistence.ChallengeRatingRepository;
-import com.schadraq.dnd_battle.persistence.Creature;
+import com.schadraq.dnd_battle.persistence.CreatureClassification;
+import com.schadraq.dnd_battle.persistence.CreatureClassificationRepository;
+import com.schadraq.dnd_battle.persistence.CreatureTemplate;
 import com.schadraq.dnd_battle.persistence.CreatureFamily;
 import com.schadraq.dnd_battle.persistence.CreatureFamilyRepository;
-import com.schadraq.dnd_battle.persistence.CreatureRepository;
+import com.schadraq.dnd_battle.persistence.CreatureTemplateRepository;
 import com.schadraq.dnd_battle.persistence.CreatureSize;
 import com.schadraq.dnd_battle.persistence.CreatureSizeRepository;
 
@@ -29,6 +31,9 @@ import lombok.extern.slf4j.Slf4j;
 public class BattleController {
 
 	@Autowired
+	private CreatureClassificationRepository repoCreatureClassification;
+
+	@Autowired
 	private CreatureFamilyRepository repoCreatureFamily;
 
 	@Autowired
@@ -38,31 +43,36 @@ public class BattleController {
 	private CreatureSizeRepository repoCreatureSize;
 
 	@Autowired
-	private CreatureRepository repoCreature;
-	
+	private CreatureTemplateRepository repoCreature;
+
+	@GetMapping("/creature-classifications")
+	public List<CreatureClassification> getCreatureClassificationList() {
+		return repoCreatureClassification.findAll();
+	}
+
 	@GetMapping("/creature-families")
 	public List<CreatureFamily> getCreatureFamilyList() {
 		return repoCreatureFamily.findAll();
 	}
-	
+
 	@GetMapping("/challenge-ratings")
 	public List<ChallengeRating> getChallengeRatingList() {
 		return repoChallengeRating.findAll();
 	}
-	
+
 	@GetMapping("/creature-sizes")
 	public List<CreatureSize> getCreatureSizeList() {
 		return repoCreatureSize.findAll();
 	}
-	
-	@GetMapping("/creatures")
-	public List<Creature> getCreatureList() {
+
+	@GetMapping("/creature-templates")
+	public List<CreatureTemplate> getCreatureList() {
 		return repoCreature.findAll();
 	}
-	
-	@GetMapping("/creature")
-	public Optional<Creature> getCreature(@NotNull @RequestParam UUID id) {
-		Optional<Creature> creature = repoCreature.findById(id);
+
+	@GetMapping("/creature-template")
+	public Optional<CreatureTemplate> getCreature(@NotNull @RequestParam UUID id) {
+		Optional<CreatureTemplate> creature = repoCreature.findById(id);
 		return creature;
 	}
 }
