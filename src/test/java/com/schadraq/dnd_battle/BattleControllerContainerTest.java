@@ -108,24 +108,24 @@ public class BattleControllerContainerTest extends PersistenceTest {
 	@Test
 	void test_retrieve_creatures() throws Exception {
 
-		log.info(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creatures", String.class));
-		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creatures",
+		log.info(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature-templates", String.class));
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature-templates",
 				String.class)).contains("Ogre");
 	}
 
 	@Test
 	void test_retrieve_valid_single_creature() throws Exception {
 
-		log.info(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature?id=5091265c-1645-47f2-8f1f-381b899085ad", String.class));
-		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature?id=5091265c-1645-47f2-8f1f-381b899085ad",
+		log.info(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature-template?id=5091265c-1645-47f2-8f1f-381b899085ad", String.class));
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature-template?id=5091265c-1645-47f2-8f1f-381b899085ad",
 				String.class)).contains("Ogre");
 	}
 
 	@Test
 	void test_retrieve_invalid_single_creature() throws Exception {
 
-		log.info(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature?id=5091265c-1645-47f2-8f1f-381b899085a", String.class));
-		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature?id=5091265c-1645-47f2-8f1f-381b899085a",
+		log.info(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature-template?id=5091265c-1645-47f2-8f1f-381b899085a", String.class));
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature-template?id=5091265c-1645-47f2-8f1f-381b899085a",
 				String.class)).contains("");
 	}
 }
