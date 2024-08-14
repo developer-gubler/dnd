@@ -56,10 +56,10 @@ import lombok.extern.slf4j.Slf4j;
  * require high maintenance over time.
  */
 @RunWith(SpringRunner.class)
-@WebMvcTest(BattleController.class)
+@WebMvcTest(CreatureController.class)
 @ActiveProfiles("test")
 @Slf4j
-public class BattleControllerWebMvcTests {
+public class CreatureControllerWebMvcTests {
 
 	@Autowired
 	private MockMvc mockMvc;

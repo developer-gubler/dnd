@@ -33,7 +33,7 @@ import lombok.extern.slf4j.Slf4j;
 @SpringBootTest(classes = DndBattleApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)	//  NOTE: tells Spring Boot to look for a main configuration class (one with @SpringBootApplication, for instance) and use that to start a Spring application context
 @ActiveProfiles("test")
 @Slf4j
-public class BattleControllerTests {
+public class CreatureControllerTests {
 
 	@LocalServerPort
 	private int port;
@@ -45,7 +45,7 @@ public class BattleControllerTests {
     private EntityManager entityManager;
 
     @Autowired
-    private BattleController controller;
+    private CreatureController controller;
 
 	@Test
 	void contextLoads() throws Exception {
@@ -57,37 +57,37 @@ public class BattleControllerTests {
 
 	@Test
 	void test_retrieve_challenge_ratings() throws Exception {
-		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/challenge-ratings",
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/dnd/creature/challenge-ratings",
 				String.class)).contains("30");
 	}
 
 	@Test
 	void test_retrieve_creature_families() throws Exception {
-		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature-families",
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/dnd/creature/families",
 				String.class)).contains("Aberration");
 	}
 
 	@Test
 	void test_retrieve_creature_sizes() throws Exception {
-		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature-sizes",
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/dnd/creature/sizes",
 				String.class)).contains("gargantuan");
 	}
 
 	@Test
 	void test_retrieve_creatures() throws Exception {
-		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature-templates",
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/dnd/creature/templates",
 				String.class)).contains("Ogre");
 	}
 
 	@Test
 	void test_retrieve_valid_single_creature() throws Exception {
-		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature-template?id=5091265c-1645-47f2-8f1f-381b899085ad",
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/dnd/creature/template?id=5091265c-1645-47f2-8f1f-381b899085ad",
 				String.class)).contains("Ogre");
 	}
 
 	@Test
 	void test_retrieve_invalid_single_creature() throws Exception {
-		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature-template?id=5091265c-1645-47f2-8f1f-381b899085a",
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/dnd/creature/template?id=5091265c-1645-47f2-8f1f-381b899085a",
 				String.class)).contains("");
 	}
 }

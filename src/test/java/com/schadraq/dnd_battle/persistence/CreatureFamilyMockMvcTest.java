@@ -20,7 +20,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.schadraq.dnd_battle.BattleController;
+import com.schadraq.dnd_battle.CreatureController;
 import com.schadraq.dnd_battle.DndBattleApplication;
 
 import lombok.extern.slf4j.Slf4j;
@@ -39,7 +39,7 @@ public class CreatureFamilyMockMvcTest extends PersistenceTest {
 	private CreatureFamilyRepository repo;
 
     @Autowired
-    private BattleController controller;
+    private CreatureController controller;
 
 	@Test
 	void contextLoads() throws Exception {

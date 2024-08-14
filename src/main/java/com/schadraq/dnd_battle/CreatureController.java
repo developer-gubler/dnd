@@ -29,9 +29,9 @@ import com.schadraq.dnd_battle.persistence.CreatureSize;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("dnd-battle")
+@RequestMapping("/api/dnd/creature")
 @Slf4j
-public class BattleController {
+public class CreatureController {
 
 	@Autowired
 	private BattleService svcBattle;
@@ -52,12 +52,12 @@ public class BattleController {
 		return svcEquipment.getWeaponList();
 	}
 
-	@GetMapping("/creature-classifications")
+	@GetMapping("/classifications")
 	public List<CreatureClassification> getCreatureClassificationList() {
 		return svcCreature.getClassificationList();
 	}
 
-	@GetMapping("/creature-families")
+	@GetMapping("/families")
 	public List<CreatureFamily> getCreatureFamilyList() {
 		return svcCreature.getFamilyList();
 	}
@@ -67,17 +67,17 @@ public class BattleController {
 		return svcCreature.getChallengeRatingList();
 	}
 
-	@GetMapping("/creature-sizes")
+	@GetMapping("/sizes")
 	public List<CreatureSize> getCreatureSizeList() {
 		return svcCreature.getSizeList();
 	}
 
-	@GetMapping("/creature-templates")
+	@GetMapping("/templates")
 	public List<CreatureTemplate> getCreatureList() {
 		return svcCreature.getCreatureList();
 	}
 
-	@GetMapping("/creature-template")
+	@GetMapping("/template")
 	public Optional<CreatureTemplate> getCreature(@RequestParam UUID id) {
 		return svcCreature.getCreature(id);
 	}
