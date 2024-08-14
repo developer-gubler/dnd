@@ -63,10 +63,13 @@ public class CreatureControllerContainerTest extends PersistenceTest {
 	private TestRestTemplate restTemplate;
 
     @Autowired
-    private ChallengeRatingRepository repo;
+    private CreatureController controller;
 
     @Autowired
-    private CreatureController controller;
+    private EquipmentController ctlEquipment;
+
+    @Autowired
+    private BattleController ctlBattle;
 
 	@Test
 	@Order(1)
