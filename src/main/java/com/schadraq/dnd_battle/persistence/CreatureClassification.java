@@ -7,10 +7,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Entity
@@ -22,18 +21,19 @@ public class CreatureClassification extends BaseEntity {
 	private UUID id;
 	
 	@Column(nullable = false, unique = true)
-	@NotBlank
+	@NotNull(message = "Name must be between 1 to 64 characters")
+	@Size(min = 1, max = 64)
 	private String name;
 
 	protected CreatureClassification() {
 		
 	}
 
-	public CreatureClassification(@NotBlank String name) {
+	public CreatureClassification(String name) {
 		this.name = name;
 	}
 
-	public CreatureClassification(@NotBlank UUID id, @NotBlank String name) {
+	public CreatureClassification(UUID id, String name) {
 		this(name);
 		this.id = id;
 	}

@@ -1,6 +1,6 @@
 services:
-  dnd-battle-postgres:
-    container_name: 'dnd-battle-postgres'
+  dnd-battle-database:
+    container_name: 'dnd-battle-database'
     image: 'postgres:latest'
     environment:
       - 'POSTGRES_DB=dnd-database'
@@ -9,9 +9,9 @@ services:
     ports:
       - '5432'
     networks:
-      - dnd-network
+      - dnd-battle-network
   dnd-battle-pgadmin:
-    container_name: 'dnd-battle-pgAdmin'
+    container_name: 'dnd-battle-pgadmin'
     image: 'dpage/pgadmin4:latest'
     environment:
       - 'PGADMIN_DEFAULT_EMAIL=developer.gubler@gmail.com'
@@ -20,9 +20,9 @@ services:
     ports:
       - '5051:5050'
     networks:
-      - dnd-network
+      - dnd-battle-network
     depends_on:
-      - dnd-battle-postgres
+      - dnd-battle-database
   dnd-battle:
     container_name: dnd-battle
     build:
@@ -30,16 +30,16 @@ services:
       dockerfile: Dockerfile
     image: dnd-battle:latest
     ports:
-      - 8080:8080
+      - 8081:8080
     networks:
-      - dnd-network
+      - dnd-battle-network
     depends_on:
-        - dnd-battle-postgres
+        - dnd-battle-database
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://dnd-battle-postgres:5432/dnd-database
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://dnd-battle-database:5432/dnd-database
       - SPRING_DATASOURCE_USERNAME=dnd-user
       - SPRING_DATASOURCE_PASSWORD=dnd-secret
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 networks:
-  dnd-network:
+  dnd-battle-network:
     driver: bridge

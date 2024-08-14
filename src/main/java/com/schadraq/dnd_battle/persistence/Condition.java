@@ -1,6 +1,5 @@
 package com.schadraq.dnd_battle.persistence;
 
-import java.util.List;
 import java.util.UUID;
 
 import org.springframework.lang.NonNull;
@@ -31,4 +30,17 @@ public class Condition extends BaseEntity {
 //	private BattleParticipant source;
 //
 //	private List<BattleParticipant> target;
+
+	protected Condition() {
+		
+	}
+
+	public Condition(Battle battle) {
+		this(UUID.randomUUID(), battle);
+	}
+
+	public Condition(UUID id, Battle battle) {
+		this.id = id;
+		this.battle = battle;
+	}
 }

@@ -2,8 +2,6 @@ package com.schadraq.dnd_battle.persistence;
 
 import java.util.UUID;
 
-import org.springframework.lang.NonNull;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,7 +13,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 /**
@@ -30,17 +30,18 @@ public class CreatureTemplate extends BaseEntity {
 	private UUID id;
 	
 	@Column(nullable = false, unique = true)
-	@NotBlank
+	@NotNull(message = "Name must be between 1 to 32 characters")
+	@Size(min = 1, max = 32)
 	private String name;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "family_id", referencedColumnName = "id")
-	@NonNull
+	@JoinColumn(name = "family_id", referencedColumnName = "id", nullable = false)
+	@NotNull
 	private CreatureFamily family;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "creature_size_id", referencedColumnName = "id")
-	@NonNull
+	@JoinColumn(name = "creature_size_id", referencedColumnName = "id", nullable = false)
+	@NotNull
 	private CreatureSize size;
 	
 	@Column(nullable = false)
@@ -108,31 +109,31 @@ public class CreatureTemplate extends BaseEntity {
 	private Short proficiency_bonus;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "challenge_rating_id", referencedColumnName = "id")
+	@JoinColumn(name = "challenge_rating_id", referencedColumnName = "id", nullable = false)
 	private ChallengeRating cr;
 
 	@Column(nullable = false)
-	@NonNull
+	@NotNull
 	private Boolean save_str;
 
 	@Column(nullable = false)
-	@NonNull
+	@NotNull
 	private Boolean save_dex;
 
 	@Column(nullable = false)
-	@NonNull
+	@NotNull
 	private Boolean save_con;
 
 	@Column(nullable = false)
-	@NonNull
+	@NotNull
 	private Boolean save_int;
 
 	@Column(nullable = false)
-	@NonNull
+	@NotNull
 	private Boolean save_wis;
 
 	@Column(nullable = false)
-	@NonNull
+	@NotNull
 	private Boolean save_cha;
 	
 	@Column(nullable = false)
@@ -315,21 +316,21 @@ public class CreatureTemplate extends BaseEntity {
 		
 	}
 
-	public CreatureTemplate(@NotBlank String name, @NonNull CreatureFamily family, @NonNull CreatureSize size, @NotBlank String alignment,
-			@Min(value = 0, message = "Walking speed cannot be less than 0") Short speed_walk, @Min(value = 0, message = "Burrowing speed cannot be less than 0") Short speed_burrow, @Min(value = 0, message = "Climbing speed cannot be less than 0") Short speed_climb, @Min(value = 0, message = "Flying speed cannot be less than 0") Short speed_fly, @Min(value = 0, message = "Swimming speed cannot be less than 0") Short speed_swim,
-			@Positive Short str, @Positive Short dex, @Positive Short con, @Positive Short intelligence, @Positive Short wis, @Positive Short cha,
-			@Positive Short hit_points, @NotBlank String hit_dice, @Positive Short armor_class, @Positive Short proficiency_bonus, @NonNull ChallengeRating cr,
-			@NonNull Boolean save_str, @NonNull Boolean save_dex, @NonNull Boolean save_con, @NonNull Boolean save_int, @NonNull Boolean save_wis, @NonNull Boolean save_cha,
-			@NotBlank String acrobatics, @NotBlank String animal_handling, @NotBlank String arcana, @NotBlank String athletics, @NotBlank String deception,
-			@NotBlank String history, @NotBlank String insight, @NotBlank String intimidation, @NotBlank String investigation, @NotBlank String medicine, @NotBlank String nature,
-			@NotBlank String perception, @NotBlank String performance, @NotBlank String persuasion, @NotBlank String religion, @NotBlank String sleight_of_hand,
-			@NotBlank String stealth, @NotBlank String survival, @NotBlank String alchemists_supplies, @NotBlank String brewers_supplies, @NotBlank String calligraphers_supplies,
-			@NotBlank String carpenters_tools, @NotBlank String cartographer_tools, @NotBlank String cobblers_tools, @NotBlank String cooks_utensils,
-			@NotBlank String disguise_kit, @NotBlank String forgery_kit, @NotBlank String gaming_set, @NotBlank String glassblowers_tools, @NotBlank String herbalism_kit,
-			@NotBlank String jewelers_tools, @NotBlank String land_and_water_vehicles, @NotBlank String leatherworkers_tools, @NotBlank String masons_tools,
-			@NotBlank String musical_instrument, @NotBlank String navigators_tools, @NotBlank String painters_supplies, @NotBlank String poisoners_kit,
-			@NotBlank String potters_tools, @NotBlank String smiths_tools, @NotBlank String thieves_tools, @NotBlank String tinkers_tools,
-			@NotBlank String weavers_tools, @NotBlank String woodcarvers_tools) {
+	public CreatureTemplate(String name, CreatureFamily family, CreatureSize size, String alignment,
+			Short speed_walk, Short speed_burrow, Short speed_climb, Short speed_fly, Short speed_swim,
+			Short str, Short dex, Short con, Short intelligence, Short wis, Short cha,
+			Short hit_points, String hit_dice, Short armor_class, Short proficiency_bonus,ChallengeRating cr,
+			Boolean save_str, Boolean save_dex, Boolean save_con, Boolean save_int, Boolean save_wis, Boolean save_cha,
+			String acrobatics, String animal_handling, String arcana, String athletics, String deception,
+			String history, String insight, String intimidation, String investigation, String medicine, String nature,
+			String perception, String performance, String persuasion, String religion, String sleight_of_hand,
+			String stealth, String survival, String alchemists_supplies, String brewers_supplies, String calligraphers_supplies,
+			String carpenters_tools, String cartographer_tools, String cobblers_tools, String cooks_utensils,
+			String disguise_kit, String forgery_kit, String gaming_set, String glassblowers_tools, String herbalism_kit,
+			String jewelers_tools, String land_and_water_vehicles, String leatherworkers_tools, String masons_tools,
+			String musical_instrument, String navigators_tools, String painters_supplies, String poisoners_kit,
+			String potters_tools, String smiths_tools, String thieves_tools, String tinkers_tools,
+			String weavers_tools, String woodcarvers_tools) {
 		this.name = name;
 		this.family = family;
 		this.size = size;
@@ -402,21 +403,21 @@ public class CreatureTemplate extends BaseEntity {
 		this.woodcarvers_tools = woodcarvers_tools;
 	}
 
-	public CreatureTemplate(@NotBlank UUID id, @NotBlank String name, @NonNull CreatureFamily family, @NonNull CreatureSize size, @NotBlank String alignment,
-			@Min(value = 0, message = "Walking speed cannot be less than 0") Short speed_walk, @Min(value = 0, message = "Burrowing speed cannot be less than 0") Short speed_burrow, @Min(value = 0, message = "Climbing speed cannot be less than 0") Short speed_climb, @Min(value = 0, message = "Flying speed cannot be less than 0") Short speed_fly, @Min(value = 0, message = "Swimming speed cannot be less than 0") Short speed_swim,
-			@Positive Short str, @Positive Short dex, @Positive Short con, @Positive Short intelligence, @Positive Short wis, @Positive Short cha,
-			@Positive Short hit_points, @NotBlank String hit_dice, @Positive Short armor_class, @Positive Short proficiency_bonus, @NonNull ChallengeRating cr,
-			@NonNull Boolean save_str, @NonNull Boolean save_dex, @NonNull Boolean save_con, @NonNull Boolean save_int, @NonNull Boolean save_wis, @NonNull Boolean save_cha,
-			@NotBlank String acrobatics, @NotBlank String animal_handling, @NotBlank String arcana, @NotBlank String athletics, @NotBlank String deception,
-			@NotBlank String history, @NotBlank String insight, @NotBlank String intimidation, @NotBlank String investigation, @NotBlank String medicine, @NotBlank String nature,
-			@NotBlank String perception, @NotBlank String performance, @NotBlank String persuasion, @NotBlank String religion, @NotBlank String sleight_of_hand,
-			@NotBlank String stealth, @NotBlank String survival, @NotBlank String alchemists_supplies, @NotBlank String brewers_supplies, @NotBlank String calligraphers_supplies,
-			@NotBlank String carpenters_tools, @NotBlank String cartographer_tools, @NotBlank String cobblers_tools, @NotBlank String cooks_utensils,
-			@NotBlank String disguise_kit, @NotBlank String forgery_kit, @NotBlank String gaming_set, @NotBlank String glassblowers_tools, @NotBlank String herbalism_kit,
-			@NotBlank String jewelers_tools, @NotBlank String land_and_water_vehicles, @NotBlank String leatherworkers_tools, @NotBlank String masons_tools,
-			@NotBlank String musical_instrument, @NotBlank String navigators_tools, @NotBlank String painters_supplies, @NotBlank String poisoners_kit,
-			@NotBlank String potters_tools, @NotBlank String smiths_tools, @NotBlank String thieves_tools, @NotBlank String tinkers_tools,
-			@NotBlank String weavers_tools, @NotBlank String woodcarvers_tools) {
+	public CreatureTemplate(UUID id, String name, CreatureFamily family, CreatureSize size, String alignment,
+			Short speed_walk, Short speed_burrow, Short speed_climb, Short speed_fly, Short speed_swim,
+			Short str, Short dex, Short con, Short intelligence, Short wis, Short cha,
+			Short hit_points, String hit_dice, Short armor_class, Short proficiency_bonus,ChallengeRating cr,
+			Boolean save_str, Boolean save_dex, Boolean save_con, Boolean save_int, Boolean save_wis, Boolean save_cha,
+			String acrobatics, String animal_handling, String arcana, String athletics, String deception,
+			String history, String insight, String intimidation, String investigation, String medicine, String nature,
+			String perception, String performance, String persuasion, String religion, String sleight_of_hand,
+			String stealth, String survival, String alchemists_supplies, String brewers_supplies, String calligraphers_supplies,
+			String carpenters_tools, String cartographer_tools, String cobblers_tools, String cooks_utensils,
+			String disguise_kit, String forgery_kit, String gaming_set, String glassblowers_tools, String herbalism_kit,
+			String jewelers_tools, String land_and_water_vehicles, String leatherworkers_tools, String masons_tools,
+			String musical_instrument, String navigators_tools, String painters_supplies, String poisoners_kit,
+			String potters_tools, String smiths_tools, String thieves_tools, String tinkers_tools,
+			String weavers_tools, String woodcarvers_tools) {
 		this(name, family, size, alignment, speed_walk, speed_burrow, speed_climb, speed_fly, speed_swim,
 				str, dex, con, intelligence, wis, cha, hit_points, hit_dice, armor_class, proficiency_bonus, cr,
 				save_str, save_dex, save_con, save_int, save_wis, save_cha,

@@ -20,7 +20,6 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
-import com.schadraq.dnd_battle.persistence.ChallengeRatingRepository;
 import com.schadraq.dnd_battle.persistence.PersistenceTest;
 
 import lombok.extern.slf4j.Slf4j;
@@ -63,9 +62,6 @@ public class BattleControllerContainerTests extends PersistenceTest {
 	private TestRestTemplate restTemplate;
 
     @Autowired
-    private ChallengeRatingRepository repo;
-
-    @Autowired
     private BattleController controller;
 
 	@Test
@@ -87,6 +83,14 @@ public class BattleControllerContainerTests extends PersistenceTest {
 		log.info(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/challenge-ratingss",String.class));
 		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/challenge-ratings",
 				String.class)).contains("30");
+	}
+
+	@Test
+	void test_retrieve_creature_classifications() throws Exception {
+
+		log.info(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature-classifications", String.class));
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/dnd-battle/creature-classifications",
+				String.class)).contains("Monstrosity");
 	}
 
 	@Test

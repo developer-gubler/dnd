@@ -9,7 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;
 
@@ -22,10 +22,12 @@ public class ChallengeRating extends BaseEntity {
 	private UUID id;
 
 	@Column(nullable = false, unique = true)
+	@NotNull
 	@Positive
 	private BigDecimal cr;
 	
 	@Column(nullable = false, unique = true)
+	@NotNull
 	@Positive
 	private Long experience;
 
@@ -33,12 +35,12 @@ public class ChallengeRating extends BaseEntity {
 		
 	}
 
-	public ChallengeRating(@Positive BigDecimal cr, @Positive Long experience) {
+	public ChallengeRating(BigDecimal cr, Long experience) {
 		this.cr = cr;
 		this.experience = experience;
 	}
 
-	public ChallengeRating(@NotBlank UUID id, @Positive BigDecimal cr, @Positive Long experience) {
+	public ChallengeRating(UUID id, BigDecimal cr, Long experience) {
 		this(cr, experience);
 		this.id = id;
 	}

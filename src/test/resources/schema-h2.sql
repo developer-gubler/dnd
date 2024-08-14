@@ -141,17 +141,17 @@ CREATE TABLE IF NOT EXISTS armor
     price bigint NOT NULL,
     weight numeric NOT NULL,
     type armor_type NOT NULL,
-    ac bigint NOT NULL,
+    ac smallint NOT NULL,
     add_dex boolean NOT NULL,
-    max_dex_bonus bigint NOT NULL,
-    str_req bigint NOT NULL, 
+    max_dex_bonus smallint NOT NULL,
+    str_req smallint NOT NULL, 
     stealth_disadvantage boolean NOT NULL,
     CONSTRAINT unique_armor_name UNIQUE (name),
     CHECK (price >= 0::bigint),
     CHECK (weight >= 0::numeric),
-    CHECK (ac > 0::bigint),
-    CHECK (max_dex_bonus >= 0::bigint),
-    CHECK (str_req >= 0::bigint)
+    CHECK (ac > 0::smallint),
+    CHECK (max_dex_bonus >= 0::smallint AND max_dex_bonus <= 10::smallint),
+    CHECK (str_req >= 0::smallint AND str_req <= 30::smallint)
 );
 
 CREATE TABLE IF NOT EXISTS creature_armor_proficiency
@@ -208,6 +208,22 @@ CREATE TABLE IF NOT EXISTS creature_weapon_xref
     id uuid primary key,
     creature_id uuid NOT NULL REFERENCES creature_template(id),
     weapon_id uuid NOT NULL REFERENCES weapon(id)
+);
+
+CREATE TABLE IF NOT EXISTS battle
+(
+    id uuid primary key,
+    start timestamp NOT NULL,
+    location character varying(64) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS battle_participant
+(
+    id uuid primary key,
+    battle_id uuid NOT NULL REFERENCES battle(id),
+    template_id uuid NOT NULL REFERENCES creature_template(id),
+    initiative smallint NOT NULL,
+    hit_points smallint NOT NULL
 );
 
 --CREATE TABLE IF NOT EXISTS Alignment

@@ -30,6 +30,10 @@ DROP TABLE IF EXISTS creature_size;
 
 DROP TABLE IF EXISTS challenge_rating;
 
+DROP TABLE IF EXISTS battle_participant;
+
+DROP TABLE IF EXISTS battle;
+
 DROP TYPE IF EXISTS alignment_type;
 DROP TYPE IF EXISTS ability_level;
 DROP TYPE IF EXISTS armor_type;
@@ -202,18 +206,18 @@ CREATE TABLE IF NOT EXISTS armor
     price bigint NOT NULL,
     weight double precision NOT NULL,
     type armor_type NOT NULL,
-    ac bigint NOT NULL,
+    ac smallint NOT NULL,
     add_dex boolean NOT NULL,
-    max_dex_bonus bigint NOT NULL,
-    str_req bigint NOT NULL, 
+    max_dex_bonus smallint NOT NULL,
+    str_req smallint NOT NULL, 
     stealth_disadvantage boolean NOT NULL,
     CONSTRAINT unique_armor_name UNIQUE (name)
         INCLUDE(name),
     CONSTRAINT check_armor_price CHECK (price >= 0::bigint),
     CONSTRAINT check_armor_weight CHECK (weight >= 0::double precision),
-    CONSTRAINT check_armor_value CHECK (ac > 0::bigint),
-    CONSTRAINT check_armor_max_dex_bonus CHECK (max_dex_bonus >= 0::bigint),
-    CONSTRAINT check_armor_str_req CHECK (str_req >= 0::bigint)
+    CONSTRAINT check_armor_value CHECK (ac > 0::smallint),
+    CONSTRAINT check_armor_max_dex_bonus CHECK (max_dex_bonus >= 0::smallint AND max_dex_bonus <= 10::smallint),
+    CONSTRAINT check_armor_str_req CHECK (str_req >= 0::smallint AND str_req <= 30::smallint)
 );
 
 CREATE TABLE IF NOT EXISTS creature_armor_proficiency
@@ -297,6 +301,30 @@ CREATE TABLE IF NOT EXISTS creature_weapon_xref
         ON DELETE NO ACTION,
     CONSTRAINT fk_creature_weapon_xref_weapon FOREIGN KEY (weapon_id)
         REFERENCES weapon (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
+
+CREATE TABLE IF NOT EXISTS battle
+(
+    id uuid primary key,
+    start timestamp NOT NULL,
+    location character varying(64) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS battle_participant
+(
+    id uuid primary key,
+    battle_id uuid NOT NULL,
+    template_id uuid NOT NULL,
+    initiative smallint NOT NULL,
+    hit_points smallint NOT NULL,
+    CONSTRAINT fk_battle_participant_battle FOREIGN KEY (battle_id)
+        REFERENCES battle (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT fk_battle_participant_template FOREIGN KEY (template_id)
+        REFERENCES creature_template (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 );

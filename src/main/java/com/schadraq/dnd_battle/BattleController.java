@@ -5,24 +5,27 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.schadraq.dnd_battle.persistence.Armor;
+import com.schadraq.dnd_battle.persistence.Battle;
+import com.schadraq.dnd_battle.persistence.BattleParticipant;
 import com.schadraq.dnd_battle.persistence.ChallengeRating;
-import com.schadraq.dnd_battle.persistence.ChallengeRatingRepository;
 import com.schadraq.dnd_battle.persistence.CreatureClassification;
-import com.schadraq.dnd_battle.persistence.CreatureClassificationRepository;
 import com.schadraq.dnd_battle.persistence.CreatureTemplate;
 import com.schadraq.dnd_battle.persistence.CreatureFamily;
-import com.schadraq.dnd_battle.persistence.CreatureFamilyRepository;
-import com.schadraq.dnd_battle.persistence.CreatureTemplateRepository;
+import com.schadraq.dnd_battle.persistence.Weapon;
+import com.schadraq.dnd_battle.service.BattleService;
+import com.schadraq.dnd_battle.service.CreatureService;
+import com.schadraq.dnd_battle.service.EquipmentService;
 import com.schadraq.dnd_battle.persistence.CreatureSize;
-import com.schadraq.dnd_battle.persistence.CreatureSizeRepository;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
@@ -31,48 +34,66 @@ import lombok.extern.slf4j.Slf4j;
 public class BattleController {
 
 	@Autowired
-	private CreatureClassificationRepository repoCreatureClassification;
+	private BattleService svcBattle;
 
 	@Autowired
-	private CreatureFamilyRepository repoCreatureFamily;
+	private CreatureService svcCreature;
 
 	@Autowired
-	private ChallengeRatingRepository repoChallengeRating;
+	private EquipmentService svcEquipment;
+	
+	@GetMapping("/armors")
+	public List<Armor> getArmorList() {
+		return svcEquipment.getArmorList();
+	}
 
-	@Autowired
-	private CreatureSizeRepository repoCreatureSize;
-
-	@Autowired
-	private CreatureTemplateRepository repoCreature;
+	@GetMapping("/weapons")
+	public List<Weapon> getWeaponList() {
+		return svcEquipment.getWeaponList();
+	}
 
 	@GetMapping("/creature-classifications")
 	public List<CreatureClassification> getCreatureClassificationList() {
-		return repoCreatureClassification.findAll();
+		return svcCreature.getClassificationList();
 	}
 
 	@GetMapping("/creature-families")
 	public List<CreatureFamily> getCreatureFamilyList() {
-		return repoCreatureFamily.findAll();
+		return svcCreature.getFamilyList();
 	}
 
 	@GetMapping("/challenge-ratings")
 	public List<ChallengeRating> getChallengeRatingList() {
-		return repoChallengeRating.findAll();
+		return svcCreature.getChallengeRatingList();
 	}
 
 	@GetMapping("/creature-sizes")
 	public List<CreatureSize> getCreatureSizeList() {
-		return repoCreatureSize.findAll();
+		return svcCreature.getSizeList();
 	}
 
 	@GetMapping("/creature-templates")
 	public List<CreatureTemplate> getCreatureList() {
-		return repoCreature.findAll();
+		return svcCreature.getCreatureList();
 	}
 
 	@GetMapping("/creature-template")
-	public Optional<CreatureTemplate> getCreature(@NotNull @RequestParam UUID id) {
-		Optional<CreatureTemplate> creature = repoCreature.findById(id);
-		return creature;
+	public Optional<CreatureTemplate> getCreature(@RequestParam UUID id) {
+		return svcCreature.getCreature(id);
+	}
+
+	@PostMapping("/create-battle")
+	public Battle createBattle(@RequestBody Battle battle) {
+		return svcBattle.createBattle(battle);
+	}
+
+	@PostMapping(value = "/create-single-battle-participant", consumes = "application/json", produces = "application/json")
+	public BattleParticipant createBattleParticipant(@RequestBody BattleParticipant participant) {
+		return svcBattle.createSingleBattleParticipant(participant);
+	}
+
+	@DeleteMapping(value = "/delete-single-battle-participant", consumes = "application/json", produces = "application/json")
+	public void deleteBattleParticipant(@RequestBody BattleParticipant participant) {
+		svcBattle.deleteSingleBattleParticipant(participant);
 	}
 }
