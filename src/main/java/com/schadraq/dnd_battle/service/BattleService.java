@@ -8,8 +8,6 @@ import com.schadraq.dnd_battle.persistence.BattleParticipant;
 import com.schadraq.dnd_battle.persistence.BattleParticipantRepository;
 import com.schadraq.dnd_battle.persistence.BattleRepository;
 
-import reactor.core.publisher.Mono;
-
 @Service
 public class BattleService extends BaseService {
 
@@ -19,18 +17,18 @@ public class BattleService extends BaseService {
 	@Autowired
 	private BattleParticipantRepository repoBattleParticipant;
 
-	public Mono<Battle> createBattle(Battle battle) {
+	public Battle createBattle(Battle battle) {
         
         getConstraintViolations(battle);
 
-        return Mono.fromSupplier(() -> repoBattle.saveAndFlush(battle));
+        return repoBattle.saveAndFlush(battle);
 	}
 
-	public Mono<BattleParticipant> createSingleBattleParticipant(BattleParticipant participant) {
+	public BattleParticipant createSingleBattleParticipant(BattleParticipant participant) {
         
         getConstraintViolations(participant);
 
-        return Mono.fromSupplier(() -> repoBattleParticipant.saveAndFlush(participant));
+        return repoBattleParticipant.saveAndFlush(participant);
 	}
 
 	public void deleteSingleBattleParticipant(BattleParticipant participant) {

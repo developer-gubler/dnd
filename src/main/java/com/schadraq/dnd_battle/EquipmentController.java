@@ -12,7 +12,6 @@ import com.schadraq.dnd_battle.persistence.Weapon;
 import com.schadraq.dnd_battle.service.EquipmentService;
 
 import lombok.extern.slf4j.Slf4j;
-import reactor.core.publisher.Flux;
 
 @RestController
 @RequestMapping("/api/dnd/equipment")
@@ -23,12 +22,12 @@ public class EquipmentController {
 	private EquipmentService svcEquipment;
 	
 	@GetMapping("/armors")
-	public Flux<Armor> getArmorList() {
+	public List<Armor> getArmorList() {
 		return svcEquipment.getArmorList();
 	}
 
 	@GetMapping("/weapons")
-	public Flux<Weapon> getWeaponList() {
+	public List<Weapon> getWeaponList() {
 		return svcEquipment.getWeaponList();
 	}
 

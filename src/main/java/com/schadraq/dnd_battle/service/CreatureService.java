@@ -6,8 +6,6 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.schadraq.dnd_battle.persistence.ChallengeRating;
 import com.schadraq.dnd_battle.persistence.ChallengeRatingRepository;
@@ -19,9 +17,6 @@ import com.schadraq.dnd_battle.persistence.CreatureSize;
 import com.schadraq.dnd_battle.persistence.CreatureSizeRepository;
 import com.schadraq.dnd_battle.persistence.CreatureTemplate;
 import com.schadraq.dnd_battle.persistence.CreatureTemplateRepository;
-
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 @Service
 public class CreatureService extends BaseService {
@@ -41,27 +36,27 @@ public class CreatureService extends BaseService {
 	@Autowired
 	private CreatureTemplateRepository repoCreature;
 
-	public Flux<CreatureClassification> getClassificationList() {
-		return Flux.fromIterable(repoCreatureClassification.findAll());
+	public List<CreatureClassification> getClassificationList() {
+		return repoCreatureClassification.findAll();
 	}
 
-	public Flux<CreatureFamily> getFamilyList() {
-		return Flux.fromIterable(repoCreatureFamily.findAll());
+	public List<CreatureFamily> getFamilyList() {
+		return repoCreatureFamily.findAll();
 	}
 
-	public Flux<ChallengeRating> getChallengeRatingList() {
-		return Flux.fromIterable(repoChallengeRating.findAll());
+	public List<ChallengeRating> getChallengeRatingList() {
+		return repoChallengeRating.findAll();
 	}
 
-	public Flux<CreatureSize> getSizeList() {
-		return Flux.fromIterable(repoCreatureSize.findAll());
+	public List<CreatureSize> getSizeList() {
+		return repoCreatureSize.findAll();
 	}
 
-	public Flux<CreatureTemplate> getCreatureList() {
-		return Flux.fromIterable(repoCreature.findAll());
+	public List<CreatureTemplate> getCreatureList() {
+		return repoCreature.findAll();
 	}
 
-	public Mono<Optional<CreatureTemplate>> getCreature(UUID id) {
-		return Mono.fromSupplier(() -> repoCreature.findById(id));
+	public Optional<CreatureTemplate> getCreature(UUID id) {
+		return repoCreature.findById(id);
 	}
 }
