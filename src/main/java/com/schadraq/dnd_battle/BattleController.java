@@ -12,7 +12,6 @@ import com.schadraq.dnd_battle.persistence.BattleParticipant;
 import com.schadraq.dnd_battle.service.BattleService;
 
 import lombok.extern.slf4j.Slf4j;
-import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/api/dnd/battle")
@@ -23,12 +22,12 @@ public class BattleController {
 	private BattleService svcBattle;
 
 	@PostMapping("/create-battle")
-	public Mono<Battle> createBattle(@RequestBody Battle battle) {
+	public Battle createBattle(@RequestBody Battle battle) {
 		return svcBattle.createBattle(battle);
 	}
 
 	@PostMapping(value = "/create-single-battle-participant", consumes = "application/json", produces = "application/json")
-	public Mono<BattleParticipant> createBattleParticipant(@RequestBody BattleParticipant participant) {
+	public BattleParticipant createBattleParticipant(@RequestBody BattleParticipant participant) {
 		return svcBattle.createSingleBattleParticipant(participant);
 	}
 
