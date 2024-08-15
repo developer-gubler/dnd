@@ -64,12 +64,6 @@ public class CreatureControllerContainerTests extends PersistenceTest {
     @Autowired
     private CreatureController controller;
 
-    @Autowired
-    private EquipmentController ctlEquipment;
-
-    @Autowired
-    private BattleController ctlBattle;
-
 	@Test
 	@Order(1)
 	void contextLoads() throws Exception {
