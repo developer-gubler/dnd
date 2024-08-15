@@ -18,6 +18,8 @@ import com.schadraq.dnd_battle.service.CreatureService;
 import com.schadraq.dnd_battle.persistence.CreatureSize;
 
 import lombok.extern.slf4j.Slf4j;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/api/dnd/creature")
@@ -28,32 +30,32 @@ public class CreatureController {
 	private CreatureService svcCreature;
 
 	@GetMapping("/classifications")
-	public List<CreatureClassification> getCreatureClassificationList() {
+	public Flux<CreatureClassification> getCreatureClassificationList() {
 		return svcCreature.getClassificationList();
 	}
 
 	@GetMapping("/families")
-	public List<CreatureFamily> getCreatureFamilyList() {
+	public Flux<CreatureFamily> getCreatureFamilyList() {
 		return svcCreature.getFamilyList();
 	}
 
 	@GetMapping("/challenge-ratings")
-	public List<ChallengeRating> getChallengeRatingList() {
+	public Flux<ChallengeRating> getChallengeRatingList() {
 		return svcCreature.getChallengeRatingList();
 	}
 
 	@GetMapping("/sizes")
-	public List<CreatureSize> getCreatureSizeList() {
+	public Flux<CreatureSize> getCreatureSizeList() {
 		return svcCreature.getSizeList();
 	}
 
 	@GetMapping("/templates")
-	public List<CreatureTemplate> getCreatureList() {
+	public Flux<CreatureTemplate> getCreatureList() {
 		return svcCreature.getCreatureList();
 	}
 
 	@GetMapping("/template")
-	public Optional<CreatureTemplate> getCreature(@RequestParam UUID id) {
+	public Mono<Optional<CreatureTemplate>> getCreature(@RequestParam UUID id) {
 		return svcCreature.getCreature(id);
 	}
 }

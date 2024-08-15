@@ -10,6 +10,8 @@ import com.schadraq.dnd_battle.persistence.ArmorRepository;
 import com.schadraq.dnd_battle.persistence.Weapon;
 import com.schadraq.dnd_battle.persistence.WeaponRepository;
 
+import reactor.core.publisher.Flux;
+
 @Service
 public class EquipmentService extends BaseService {
 
@@ -19,11 +21,11 @@ public class EquipmentService extends BaseService {
 	@Autowired
 	private WeaponRepository repoWeapon;
 
-	public List<Armor> getArmorList() {
-		return repoArmor.findAll();
+	public Flux<Armor> getArmorList() {
+		return Flux.fromIterable(repoArmor.findAll());
 	}
 
-	public List<Weapon> getWeaponList() {
-		return repoWeapon.findAll();
+	public Flux<Weapon> getWeaponList() {
+		return Flux.fromIterable(repoWeapon.findAll());
 	}
 }

@@ -20,6 +20,9 @@ import com.schadraq.dnd_battle.persistence.CreatureSizeRepository;
 import com.schadraq.dnd_battle.persistence.CreatureTemplate;
 import com.schadraq.dnd_battle.persistence.CreatureTemplateRepository;
 
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
 @Service
 public class CreatureService extends BaseService {
 
@@ -38,28 +41,27 @@ public class CreatureService extends BaseService {
 	@Autowired
 	private CreatureTemplateRepository repoCreature;
 
-	public List<CreatureClassification> getClassificationList() {
-		return repoCreatureClassification.findAll();
+	public Flux<CreatureClassification> getClassificationList() {
+		return Flux.fromIterable(repoCreatureClassification.findAll());
 	}
 
-	public List<CreatureFamily> getFamilyList() {
-		return repoCreatureFamily.findAll();
+	public Flux<CreatureFamily> getFamilyList() {
+		return Flux.fromIterable(repoCreatureFamily.findAll());
 	}
 
-	public List<ChallengeRating> getChallengeRatingList() {
-		return repoChallengeRating.findAll();
+	public Flux<ChallengeRating> getChallengeRatingList() {
+		return Flux.fromIterable(repoChallengeRating.findAll());
 	}
 
-	public List<CreatureSize> getSizeList() {
-		return repoCreatureSize.findAll();
+	public Flux<CreatureSize> getSizeList() {
+		return Flux.fromIterable(repoCreatureSize.findAll());
 	}
 
-	public List<CreatureTemplate> getCreatureList() {
-		return repoCreature.findAll();
+	public Flux<CreatureTemplate> getCreatureList() {
+		return Flux.fromIterable(repoCreature.findAll());
 	}
 
-	public Optional<CreatureTemplate> getCreature(UUID id) {
-		Optional<CreatureTemplate> creature = repoCreature.findById(id);
-		return creature;
+	public Mono<Optional<CreatureTemplate>> getCreature(UUID id) {
+		return Mono.fromSupplier(() -> repoCreature.findById(id));
 	}
 }
