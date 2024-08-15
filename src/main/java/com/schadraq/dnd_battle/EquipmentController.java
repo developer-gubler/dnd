@@ -1,7 +1,5 @@
 package com.schadraq.dnd_battle;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +10,7 @@ import com.schadraq.dnd_battle.persistence.Weapon;
 import com.schadraq.dnd_battle.service.EquipmentService;
 
 import lombok.extern.slf4j.Slf4j;
+import reactor.core.publisher.Flux;
 
 @RestController
 @RequestMapping("/api/dnd/equipment")
@@ -22,12 +21,12 @@ public class EquipmentController {
 	private EquipmentService svcEquipment;
 	
 	@GetMapping("/armors")
-	public List<Armor> getArmorList() {
+	public Flux<Armor> getArmorList() {
 		return svcEquipment.getArmorList();
 	}
 
 	@GetMapping("/weapons")
-	public List<Weapon> getWeaponList() {
+	public Flux<Weapon> getWeaponList() {
 		return svcEquipment.getWeaponList();
 	}
 
