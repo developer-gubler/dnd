@@ -36,9 +36,9 @@ services:
     depends_on:
         - dnd-battle-database
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://dnd-battle-database:5432/dnd-database
-      - SPRING_DATASOURCE_USERNAME=dnd-user
-      - SPRING_DATASOURCE_PASSWORD=dnd-secret
+      - SPRING_R2DBC_URL=r2dbc:postgresql://dnd-battle-database:5432/dnd-database
+      - SPRING_R2DBC_USERNAME=dnd-user
+      - SPRING_R2DBC_PASSWORD=dnd-secret
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 networks:
   dnd-battle-network:

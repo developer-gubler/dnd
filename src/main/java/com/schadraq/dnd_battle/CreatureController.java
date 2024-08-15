@@ -54,7 +54,8 @@ public class CreatureController {
 	}
 
 	@GetMapping("/template")
-	public Mono<Optional<CreatureTemplate>> getCreature(@RequestParam UUID id) {
+	public Mono<CreatureTemplate> getCreature(@RequestParam UUID id) {
+		log.error(id.toString());
 		return svcCreature.getCreature(id);
 	}
 }

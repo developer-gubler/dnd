@@ -23,14 +23,14 @@ public class BattleService extends BaseService {
         
         getConstraintViolations(battle);
 
-        return Mono.just(repoBattle.saveAndFlush(battle));
+        return repoBattle.save(battle);
 	}
 
 	public Mono<BattleParticipant> createSingleBattleParticipant(BattleParticipant participant) {
         
         getConstraintViolations(participant);
 
-        return Mono.just(repoBattleParticipant.saveAndFlush(participant));
+        return repoBattleParticipant.save(participant);
 	}
 
 	public void deleteSingleBattleParticipant(BattleParticipant participant) {

@@ -17,10 +17,12 @@ import com.schadraq.dnd_battle.persistence.CreatureSizeRepository;
 import com.schadraq.dnd_battle.persistence.CreatureTemplate;
 import com.schadraq.dnd_battle.persistence.CreatureTemplateRepository;
 
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
+@Slf4j
 public class CreatureService extends BaseService {
 
 	@Autowired
@@ -39,26 +41,37 @@ public class CreatureService extends BaseService {
 	private CreatureTemplateRepository repoCreature;
 
 	public Flux<CreatureClassification> getClassificationList() {
-		return Flux.fromIterable(repoCreatureClassification.findAll());
+		return repoCreatureClassification.findAll();
 	}
 
 	public Flux<CreatureFamily> getFamilyList() {
-		return Flux.fromIterable(repoCreatureFamily.findAll());
+		return repoCreatureFamily.findAll();
 	}
 
 	public Flux<ChallengeRating> getChallengeRatingList() {
-		return Flux.fromIterable(repoChallengeRating.findAll());
+		return repoChallengeRating.findAll();
 	}
 
 	public Flux<CreatureSize> getSizeList() {
-		return Flux.fromIterable(repoCreatureSize.findAll());
+		return repoCreatureSize.findAll();
 	}
 
 	public Flux<CreatureTemplate> getCreatureList() {
-		return Flux.fromIterable(repoCreature.findAll());
+		return repoCreature.findAll();
 	}
 
-	public Mono<Optional<CreatureTemplate>> getCreature(UUID id) {
-		return Mono.just(repoCreature.findById(id));
+	public Mono<CreatureTemplate> getCreature(UUID id) {
+
+		// TODO: Determine why this is failing with a valid UUID
+		log.error("UUID: " + id.toString());
+		Mono<CreatureTemplate> response = Mono.empty();
+		try {
+			response = repoCreature.findById(id);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return response;
 	}
 }

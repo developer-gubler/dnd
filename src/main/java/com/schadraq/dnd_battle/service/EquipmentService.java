@@ -20,10 +20,10 @@ public class EquipmentService extends BaseService {
 	private WeaponRepository repoWeapon;
 
 	public Flux<Armor> getArmorList() {
-		return Flux.fromIterable(repoArmor.findAll());
+		return repoArmor.findAll();
 	}
 
 	public Flux<Weapon> getWeaponList() {
-		return Flux.fromIterable(repoWeapon.findAll());
+		return repoWeapon.findAll();
 	}
 }
