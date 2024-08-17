@@ -2,14 +2,11 @@ package com.schadraq.dnd_battle.persistence;
 
 import java.util.UUID;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -34,15 +31,27 @@ public class CreatureTemplate extends BaseEntity {
 	@Size(min = 1, max = 32)
 	private String name;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "family_id", referencedColumnName = "id", nullable = false)
+	/**
+	 * NOTE: R2DBC does NOT support relations  (ie foreign key definitions).
+	 * 		 As a result, I had to change this to just a UUID.  It is important
+	 * 		 to create your tables outside of JPA so that the table
+	 * 		 is created with the foreign key and the database (instead of the
+	 * 		 application) can still enforce the relation.
+	 */
+	@Column(nullable = false)
 	@NotNull
-	private CreatureFamily family;
+	private UUID family_id;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "creature_size_id", referencedColumnName = "id", nullable = false)
+	/**
+	 * NOTE: R2DBC does NOT support relations  (ie foreign key definitions).
+	 * 		 As a result, I had to change this to just a UUID.  It is important
+	 * 		 to create your tables outside of JPA so that the table
+	 * 		 is created with the foreign key and the database (instead of the
+	 * 		 application) can still enforce the relation.
+	 */
+	@Column(nullable = false)
 	@NotNull
-	private CreatureSize size;
+	private UUID creature_size_id;
 	
 	@Column(nullable = false)
 	@NotBlank
@@ -108,9 +117,16 @@ public class CreatureTemplate extends BaseEntity {
     @Positive
 	private Short proficiency_bonus;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "challenge_rating_id", referencedColumnName = "id", nullable = false)
-	private ChallengeRating cr;
+	/**
+	 * NOTE: R2DBC does NOT support relations  (ie foreign key definitions).
+	 * 		 As a result, I had to change this to just a UUID.  It is important
+	 * 		 to create your tables outside of JPA so that the table
+	 * 		 is created with the foreign key and the database (instead of the
+	 * 		 application) can still enforce the relation.
+	 */
+	@Column(nullable = false)
+	@NotNull
+	private UUID challenge_rating_id;
 
 	@Column(nullable = false)
 	@NotNull
@@ -316,10 +332,10 @@ public class CreatureTemplate extends BaseEntity {
 		
 	}
 
-	public CreatureTemplate(String name, CreatureFamily family, CreatureSize size, String alignment,
+	public CreatureTemplate(String name, UUID family_id, UUID creature_size_id, String alignment,
 			Short speed_walk, Short speed_burrow, Short speed_climb, Short speed_fly, Short speed_swim,
 			Short str, Short dex, Short con, Short intelligence, Short wis, Short cha,
-			Short hit_points, String hit_dice, Short armor_class, Short proficiency_bonus,ChallengeRating cr,
+			Short hit_points, String hit_dice, Short armor_class, Short proficiency_bonus, UUID challenge_rating_id,
 			Boolean save_str, Boolean save_dex, Boolean save_con, Boolean save_int, Boolean save_wis, Boolean save_cha,
 			String acrobatics, String animal_handling, String arcana, String athletics, String deception,
 			String history, String insight, String intimidation, String investigation, String medicine, String nature,
@@ -332,8 +348,8 @@ public class CreatureTemplate extends BaseEntity {
 			String potters_tools, String smiths_tools, String thieves_tools, String tinkers_tools,
 			String weavers_tools, String woodcarvers_tools) {
 		this.name = name;
-		this.family = family;
-		this.size = size;
+		this.family_id = family_id;
+		this.creature_size_id = creature_size_id;
 		this.alignment = alignment;
 		this.speed_walk = speed_walk;
 		this.speed_burrow = speed_burrow;
@@ -350,7 +366,7 @@ public class CreatureTemplate extends BaseEntity {
 		this.hit_dice = hit_dice;
 		this.armor_class = armor_class;
 		this.proficiency_bonus = proficiency_bonus;
-		this.cr = cr;
+		this.challenge_rating_id = challenge_rating_id;
 		this.save_str = save_str;
 		this.save_dex = save_dex;
 		this.save_con = save_con;
@@ -403,10 +419,10 @@ public class CreatureTemplate extends BaseEntity {
 		this.woodcarvers_tools = woodcarvers_tools;
 	}
 
-	public CreatureTemplate(UUID id, String name, CreatureFamily family, CreatureSize size, String alignment,
+	public CreatureTemplate(UUID id, String name, UUID family_id, UUID creature_size_id, String alignment,
 			Short speed_walk, Short speed_burrow, Short speed_climb, Short speed_fly, Short speed_swim,
 			Short str, Short dex, Short con, Short intelligence, Short wis, Short cha,
-			Short hit_points, String hit_dice, Short armor_class, Short proficiency_bonus,ChallengeRating cr,
+			Short hit_points, String hit_dice, Short armor_class, Short proficiency_bonus, UUID challenge_rating_id,
 			Boolean save_str, Boolean save_dex, Boolean save_con, Boolean save_int, Boolean save_wis, Boolean save_cha,
 			String acrobatics, String animal_handling, String arcana, String athletics, String deception,
 			String history, String insight, String intimidation, String investigation, String medicine, String nature,
@@ -418,8 +434,8 @@ public class CreatureTemplate extends BaseEntity {
 			String musical_instrument, String navigators_tools, String painters_supplies, String poisoners_kit,
 			String potters_tools, String smiths_tools, String thieves_tools, String tinkers_tools,
 			String weavers_tools, String woodcarvers_tools) {
-		this(name, family, size, alignment, speed_walk, speed_burrow, speed_climb, speed_fly, speed_swim,
-				str, dex, con, intelligence, wis, cha, hit_points, hit_dice, armor_class, proficiency_bonus, cr,
+		this(name, family_id, creature_size_id, alignment, speed_walk, speed_burrow, speed_climb, speed_fly, speed_swim,
+				str, dex, con, intelligence, wis, cha, hit_points, hit_dice, armor_class, proficiency_bonus, challenge_rating_id,
 				save_str, save_dex, save_con, save_int, save_wis, save_cha,
 				acrobatics, animal_handling, arcana, athletics, deception,
 				history, insight, intimidation, investigation, medicine, nature, // 37

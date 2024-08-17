@@ -25,10 +25,16 @@ public class CreatureFamily extends BaseEntity {
 	@Id @GeneratedValue(strategy = GenerationType.UUID)
 	private UUID id;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "classification_id", referencedColumnName = "id", nullable = false)
+	/**
+	 * NOTE: R2DBC does NOT support relations  (ie foreign key definitions).
+	 * 		 As a result, I had to change this to just a UUID.  It is important
+	 * 		 to create your tables outside of JPA so that the table
+	 * 		 is created with the foreign key and the database (instead of the
+	 * 		 application) can still enforce the relation.
+	 */
+	@Column(nullable = false)
 	@NotNull
-	private CreatureClassification classication;
+	private UUID classification_id;
 
 	@Column(nullable = false)
 	@NotNull(message = "Name must be between 1 to 32 characters")
@@ -39,13 +45,13 @@ public class CreatureFamily extends BaseEntity {
 		
 	}
 
-	public CreatureFamily(CreatureClassification classification, String name) {
-		this.classication = classification;
+	public CreatureFamily(UUID classification_id, String name) {
+		this.classification_id = classification_id;
 		this.name = name;
 	}
 
-	public CreatureFamily(UUID id, CreatureClassification classification, String name) {
-		this(classification, name);
+	public CreatureFamily(UUID id, UUID classification_id, String name) {
+		this(classification_id, name);
 		this.id = id;
 	}
 }

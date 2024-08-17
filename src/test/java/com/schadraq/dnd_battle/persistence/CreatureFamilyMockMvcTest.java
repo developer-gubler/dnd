@@ -83,9 +83,9 @@ public class CreatureFamilyMockMvcTest extends PersistenceTest {
 
         ///////////////////////////////////////////////////////////////////////
         // NOTE: Test to see if we can insert a new alignment
-    	CreatureFamily record = createRecord(false, repo, new CreatureFamily(UUID.randomUUID(), r.getClassication(), "Gubler"));
+    	CreatureFamily record = createRecord(false, repo, new CreatureFamily(UUID.randomUUID(), r.getClassification_id(), "Gubler"));
     	if (record != null) {
-    		readRecord(true, repo, record, (found) -> {assertEquals(record.getName(), found.getName());assertEquals(record.getClassication(), found.getClassication());} );
+    		readRecord(true, repo, record, (found) -> {assertEquals(record.getName(), found.getName());assertEquals(record.getClassification_id(), found.getClassification_id());} );
     	}
     }
 }

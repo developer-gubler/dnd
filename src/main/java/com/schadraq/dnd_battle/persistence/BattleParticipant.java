@@ -24,15 +24,27 @@ public class BattleParticipant extends BaseEntity {
 	@Id @GeneratedValue(strategy = GenerationType.UUID)
 	private UUID id;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "battle_id", referencedColumnName = "id", nullable = false)
+	/**
+	 * NOTE: R2DBC does NOT support relations  (ie foreign key definitions).
+	 * 		 As a result, I had to change this to just a UUID.  It is important
+	 * 		 to create your tables outside of JPA so that the table
+	 * 		 is created with the foreign key and the database (instead of the
+	 * 		 application) can still enforce the relation.
+	 */
+	@Column(nullable = false)
 	@NotNull
-	private Battle battle;
+	private UUID battle_id;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "template_id", referencedColumnName = "id", nullable = false)
+	/**
+	 * NOTE: R2DBC does NOT support relations  (ie foreign key definitions).
+	 * 		 As a result, I had to change this to just a UUID.  It is important
+	 * 		 to manually create your tables outside of JPA so that the table
+	 * 		 is created with the foreign key and the database (instead of the
+	 * 		 application) can still enforce the relation.
+	 */
+	@Column(nullable = false)
 	@NotNull
-	private CreatureTemplate template;
+	private UUID template_id;
 
 	@Column(nullable = false)
 	@NotNull
@@ -48,14 +60,14 @@ public class BattleParticipant extends BaseEntity {
 		
 	}
 
-	public BattleParticipant(Battle battle, CreatureTemplate template, Short initiative, Short hit_points) {
-		this(UUID.randomUUID(), battle, template, initiative, hit_points);
+	public BattleParticipant(UUID battle_id, UUID template_id, Short initiative, Short hit_points) {
+		this(UUID.randomUUID(), battle_id, template_id, initiative, hit_points);
 	}
 
-	public BattleParticipant(UUID id, Battle battle, CreatureTemplate template, Short initiative, Short hit_points) {
+	public BattleParticipant(UUID id, UUID battle_id, UUID template_id, Short initiative, Short hit_points) {
 		this.id = id;
-		this.battle = battle;
-		this.template = template;
+		this.battle_id = battle_id;
+		this.template_id = template_id;
 		this.initiative = initiative;
 		this.hit_points = hit_points;
 	}

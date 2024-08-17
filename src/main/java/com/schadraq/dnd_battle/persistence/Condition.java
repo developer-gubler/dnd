@@ -5,6 +5,7 @@ import java.util.UUID;
 import org.springframework.lang.NonNull;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,10 +23,16 @@ public class Condition extends BaseEntity {
 	@Id @GeneratedValue(strategy = GenerationType.UUID)
 	private UUID id;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "battle_id", referencedColumnName = "id")
+	/**
+	 * NOTE: R2DBC does NOT support relations  (ie foreign key definitions).
+	 * 		 As a result, I had to change this to just a UUID.  It is important
+	 * 		 to create your tables outside of JPA so that the table
+	 * 		 is created with the foreign key and the database (instead of the
+	 * 		 application) can still enforce the relation.
+	 */
+	@Column(nullable = false)
 	@NonNull
-	private Battle battle;
+	private UUID battle_id;
 
 //	private BattleParticipant source;
 //
@@ -35,12 +42,12 @@ public class Condition extends BaseEntity {
 		
 	}
 
-	public Condition(Battle battle) {
-		this(UUID.randomUUID(), battle);
+	public Condition(UUID battle_id) {
+		this(UUID.randomUUID(), battle_id);
 	}
 
-	public Condition(UUID id, Battle battle) {
+	public Condition(UUID id, UUID battle_id) {
 		this.id = id;
-		this.battle = battle;
+		this.battle_id = battle_id;
 	}
 }
