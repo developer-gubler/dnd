@@ -15,11 +15,13 @@ import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "creature_family", uniqueConstraints={@UniqueConstraint(columnNames = {"classification_id", "name"})
 	})
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class CreatureFamily extends BaseEntity {
 
 	@Id @GeneratedValue(strategy = GenerationType.UUID)

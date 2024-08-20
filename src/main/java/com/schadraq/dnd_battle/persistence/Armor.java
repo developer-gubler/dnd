@@ -13,9 +13,11 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class Armor extends BaseEntity {
 
 	@Id @GeneratedValue(strategy = GenerationType.UUID)

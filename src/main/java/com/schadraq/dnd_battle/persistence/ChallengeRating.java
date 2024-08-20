@@ -12,10 +12,12 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "challenge_rating")
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class ChallengeRating extends BaseEntity {
 
 	@Id @GeneratedValue(strategy = GenerationType.UUID)

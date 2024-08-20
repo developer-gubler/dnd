@@ -11,10 +11,12 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "creature_classification")
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class CreatureClassification extends BaseEntity {
 
 	@Id @GeneratedValue(strategy = GenerationType.UUID)

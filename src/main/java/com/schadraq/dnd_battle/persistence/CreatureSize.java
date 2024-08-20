@@ -13,10 +13,12 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "creature_size")
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class CreatureSize extends BaseEntity {
 
 	@Id @GeneratedValue(strategy = GenerationType.UUID)

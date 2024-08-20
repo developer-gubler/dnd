@@ -14,6 +14,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * NOTE: This class really represents a template for creating creatures.
@@ -21,6 +22,7 @@ import lombok.Data;
 @Entity
 @Table(name = "creature_template")
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class CreatureTemplate extends BaseEntity {
 
 	@Id @GeneratedValue(strategy = GenerationType.UUID)

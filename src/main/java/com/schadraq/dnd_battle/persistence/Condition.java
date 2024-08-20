@@ -14,10 +14,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "condition")
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class Condition extends BaseEntity {
 
 	@Id @GeneratedValue(strategy = GenerationType.UUID)

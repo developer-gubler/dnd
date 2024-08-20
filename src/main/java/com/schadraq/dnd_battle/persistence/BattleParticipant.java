@@ -15,10 +15,12 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "battle_participant")
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class BattleParticipant extends BaseEntity {
 
 	@Id @GeneratedValue(strategy = GenerationType.UUID)

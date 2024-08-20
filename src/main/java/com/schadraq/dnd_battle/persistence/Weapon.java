@@ -14,9 +14,11 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class Weapon extends BaseEntity {
 
 	@Id @GeneratedValue(strategy = GenerationType.UUID)
