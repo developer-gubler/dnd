@@ -3,12 +3,13 @@ package com.schadraq.dnd_battle.persistence;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-import jakarta.persistence.Column;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;
@@ -20,15 +21,15 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 public class ChallengeRating extends BaseEntity {
 
-	@Id @GeneratedValue(strategy = GenerationType.UUID)
+	@Id @org.springframework.data.annotation.Id @GeneratedValue(strategy = GenerationType.UUID)
 	private UUID id;
 
-	@Column(nullable = false, unique = true)
+	@Column
 	@NotNull
 	@Positive
 	private BigDecimal cr;
 	
-	@Column(nullable = false, unique = true)
+	@Column
 	@NotNull
 	@Positive
 	private Long experience;

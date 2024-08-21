@@ -5,19 +5,22 @@ import java.util.UUID;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
+import com.schadraq.dnd_battle.service.BaseService;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Entity
-@Table(name = "condition")
+@Table(name = "creature_armor_proficiency")
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class Condition extends BaseEntity {
+public class CreatureArmorProficiency extends BaseService {
 
 	@Id @org.springframework.data.annotation.Id @GeneratedValue(strategy = GenerationType.UUID)
 	private UUID id;
@@ -29,24 +32,11 @@ public class Condition extends BaseEntity {
 	 * 		 is created with the foreign key and the database (instead of the
 	 * 		 application) can still enforce the relation.
 	 */
-	@Column(value = "battle_id")
+	@Column(value = "creature_id")
 	@NotNull
-	private UUID battleId;
-
-//	private BattleParticipant source;
-//
-//	private List<BattleParticipant> target;
-
-	protected Condition() {
-		
-	}
-
-	public Condition(UUID battle_id) {
-		this(UUID.randomUUID(), battle_id);
-	}
-
-	public Condition(UUID id, UUID battle_id) {
-		this.id = id;
-		this.battleId = battle_id;
-	}
+	private UUID creatureId;
+	
+	@Column(value = "type")
+	@NotBlank
+	private String type;
 }

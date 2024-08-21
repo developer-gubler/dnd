@@ -285,7 +285,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{dnd_base_url}}/api/dnd/creature/template?id=5091265c-1645-47f2-8f1f-381b899085ad",
+					"raw": "{{dnd_base_url}}/api/dnd/creature/template?creature_id=5091265c-1645-47f2-8f1f-381b899085ad",
 					"host": [
 						"{{dnd_base_url}}"
 					],
@@ -297,7 +297,7 @@
 					],
 					"query": [
 						{
-							"key": "id",
+							"key": "creature_id",
 							"value": "5091265c-1645-47f2-8f1f-381b899085ad"
 						}
 					]
@@ -311,7 +311,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{dnd_base_url}}/api/dnd/equipment/armors",
+					"raw": "{{dnd_base_url}}/api/dnd/equipment/armor-list",
 					"host": [
 						"{{dnd_base_url}}"
 					],
@@ -319,7 +319,149 @@
 						"api",
 						"dnd",
 						"equipment",
-						"armors"
+						"armor-list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Armor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{dnd_base_url}}/api/dnd/equipment/armor?armor_id=90288164-c213-4680-98f8-0273072a71cf",
+					"host": [
+						"{{dnd_base_url}}"
+					],
+					"path": [
+						"api",
+						"dnd",
+						"equipment",
+						"armor"
+					],
+					"query": [
+						{
+							"key": "armor_id",
+							"value": "90288164-c213-4680-98f8-0273072a71cf"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creature Armor Proficiency",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{dnd_base_url}}/api/dnd/creature-equipment/creature-armor-proficiency?creature_id=5091265c-1645-47f2-8f1f-381b899085ad",
+					"host": [
+						"{{dnd_base_url}}"
+					],
+					"path": [
+						"api",
+						"dnd",
+						"creature-equipment",
+						"creature-armor-proficiency"
+					],
+					"query": [
+						{
+							"key": "creature_id",
+							"value": "5091265c-1645-47f2-8f1f-381b899085ad"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creature Weapon Proficiency",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{dnd_base_url}}/api/dnd/creature-equipment/creature-weapon-proficiency?creature_id=5091265c-1645-47f2-8f1f-381b899085ad",
+					"host": [
+						"{{dnd_base_url}}"
+					],
+					"path": [
+						"api",
+						"dnd",
+						"creature-equipment",
+						"creature-weapon-proficiency"
+					],
+					"query": [
+						{
+							"key": "creature_id",
+							"value": "5091265c-1645-47f2-8f1f-381b899085ad"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creature Armor",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{dnd_base_url}}/api/dnd/creature-equipment/creature-armor-list?creature_id=5091265c-1645-47f2-8f1f-381b899085ad",
+					"host": [
+						"{{dnd_base_url}}"
+					],
+					"path": [
+						"api",
+						"dnd",
+						"creature-equipment",
+						"creature-armor-list"
+					],
+					"query": [
+						{
+							"key": "creature_id",
+							"value": "5091265c-1645-47f2-8f1f-381b899085ad"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creature Weapon",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{dnd_base_url}}/api/dnd/creature-equipment/creature-weapon-list?creature_id=5091265c-1645-47f2-8f1f-381b899085ad",
+					"host": [
+						"{{dnd_base_url}}"
+					],
+					"path": [
+						"api",
+						"dnd",
+						"creature-equipment",
+						"creature-weapon-list"
+					],
+					"query": [
+						{
+							"key": "creature_id",
+							"value": "5091265c-1645-47f2-8f1f-381b899085ad"
+						}
 					]
 				}
 			},
@@ -331,7 +473,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{dnd_base_url}}/api/dnd/equipment/weapons",
+					"raw": "{{dnd_base_url}}/api/dnd/equipment/weapon-list",
 					"host": [
 						"{{dnd_base_url}}"
 					],
@@ -339,7 +481,33 @@
 						"api",
 						"dnd",
 						"equipment",
-						"weapons"
+						"weapon-list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Weapon",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{dnd_base_url}}/api/dnd/equipment/weapon?weapon_id=59257171-75d5-45e6-b8b5-7b235b08e9a5",
+					"host": [
+						"{{dnd_base_url}}"
+					],
+					"path": [
+						"api",
+						"dnd",
+						"equipment",
+						"weapon"
+					],
+					"query": [
+						{
+							"key": "weapon_id",
+							"value": "59257171-75d5-45e6-b8b5-7b235b08e9a5"
+						}
 					]
 				}
 			},
@@ -378,7 +546,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"start\": \"2024-08-13T12:50:42.120Z\",\r\n    \"location\": \"Near Keta\"\r\n}",
+					"raw": "{\r\n    \"battle_id\"\r\n    \"id\": \"5a0fe699-5044-4a41-8fb1-af15de2f3a99\",\r\n    \"start\": \"2024-08-13T12:50:42.120Z\",\r\n    \"location\": \"Near Keta\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -386,12 +554,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{dnd_base_url}}/create-battle",
+					"raw": "{{dnd_base_url}}/create-battle-participant",
 					"host": [
 						"{{dnd_base_url}}"
 					],
 					"path": [
-						"create-battle"
+						"create-battle-participant"
 					]
 				}
 			},

@@ -60,18 +60,8 @@ public class CreatureService extends BaseService {
 		return repoCreature.findAll();
 	}
 
-	public Mono<CreatureTemplate> getCreature(UUID id) {
-
-		// TODO: Determine why this is failing with a valid UUID
-		log.error("UUID: " + id.toString());
-		Mono<CreatureTemplate> response = Mono.empty();
-		try {
-			response = repoCreature.findById(id);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return response;
+	public Mono<CreatureTemplate> getCreature(UUID creature_id) {
+		log.info("creature id: " + creature_id.toString());
+		return repoCreature.findById(creature_id);
 	}
 }

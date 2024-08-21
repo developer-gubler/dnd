@@ -2,29 +2,25 @@ package com.schadraq.dnd_battle.persistence;
 
 import java.util.UUID;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Entity
-@Table(name = "creature_family", uniqueConstraints={@UniqueConstraint(columnNames = {"classification_id", "name"})
-	})
+@Table(name = "creature_family")
 @Data
 @EqualsAndHashCode(callSuper=false)
 public class CreatureFamily extends BaseEntity {
 
-	@Id @GeneratedValue(strategy = GenerationType.UUID)
+	@Id @org.springframework.data.annotation.Id @GeneratedValue(strategy = GenerationType.UUID)
 	private UUID id;
 
 	/**
@@ -34,11 +30,11 @@ public class CreatureFamily extends BaseEntity {
 	 * 		 is created with the foreign key and the database (instead of the
 	 * 		 application) can still enforce the relation.
 	 */
-	@Column(nullable = false)
+	@Column(value = "classification_id")
 	@NotNull
-	private UUID classification_id;
+	private UUID classificationId;
 
-	@Column(nullable = false)
+	@Column
 	@NotNull(message = "Name must be between 1 to 32 characters")
 	@Size(min = 1, max = 32)
 	private String name;
@@ -48,7 +44,7 @@ public class CreatureFamily extends BaseEntity {
 	}
 
 	public CreatureFamily(UUID classification_id, String name) {
-		this.classification_id = classification_id;
+		this.classificationId = classification_id;
 		this.name = name;
 	}
 

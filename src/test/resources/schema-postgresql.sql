@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS creature_template
     id uuid primary key,
     name character varying(32) NOT NULL,
     family_id uuid NOT NULL,
-    creature_size_id uuid NOT NULL,
+    size_id uuid NOT NULL,
     alignment alignment_type NOT NULL,
     speed_walk smallint NOT NULL,
     speed_burrow smallint NOT NULL,
@@ -167,7 +167,7 @@ CREATE TABLE IF NOT EXISTS creature_template
         REFERENCES challenge_rating (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
-    CONSTRAINT fk_creature_creature_size FOREIGN KEY (creature_size_id)
+    CONSTRAINT fk_creature_size FOREIGN KEY (size_id)
         REFERENCES creature_size (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,

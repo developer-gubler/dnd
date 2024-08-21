@@ -3,8 +3,9 @@ package com.schadraq.dnd_battle.persistence;
 import java.math.BigDecimal;
 import java.util.UUID;
 
+import org.springframework.data.relational.core.mapping.Column;
+
 import jakarta.annotation.Nullable;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,72 +22,72 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 public class Weapon extends BaseEntity {
 
-	@Id @GeneratedValue(strategy = GenerationType.UUID)
+	@Id @org.springframework.data.annotation.Id @GeneratedValue(strategy = GenerationType.UUID)
 	private UUID id;
 
-	@Column(nullable = false, unique = true)
+	@Column
 	@NotNull(message = "Name must be between 1 to 64 characters")
 	@Size(min = 1, max = 64)
 	private String name;
 	
-	@Column(nullable = false)
+	@Column
 	@Min(value = 0)
 	private Long price;
 
-	@Column(nullable = false)
+	@Column
 	@NotNull(message = "Name must be between 1 to 16 characters")
 	@Size(min = 1, max = 16)
 	private String damage;
 
-	@Column(nullable = false)
+	@Column(value = "dmg_type")
 	@NotBlank
-	private String dmg_type;
+	private String damageType;
 
-	@Column(nullable = false)
+	@Column
 	@Min(value = 0)
 	private BigDecimal weight;
 
-	@Column(nullable = false)
+	@Column(value = "wpn_type")
 	@NotBlank
-	private String wpn_type;
+	private String weaponType;
 
-	@Column(nullable = true)
+	@Column
 	@Nullable
 	private String ammunition;
 
-	@Column(nullable = false)
+	@Column
 	@NotNull
 	private Boolean finesse;
 
-	@Column(nullable = false)
+	@Column
 	@NotNull
 	private Boolean heavy;
 
-	@Column(nullable = false)
+	@Column
 	@NotNull
 	private Boolean light;
 
-	@Column(nullable = false)
+	@Column
 	@NotNull
 	private Boolean loading;
 
-	@Column(nullable = false)
+	@Column
 	@NotNull
 	private Boolean reach;
 
-	@Column(nullable = false)
+	@Column
 	@NotNull
 	private Boolean special;
 
-	@Column(nullable = true)
+	@Column
 	@Nullable
 	private String thrown;
 
-	@Column(nullable = false)
+	@Column(value = "two_handed")
 	@NotNull
-	private Boolean two_handed;
+	private Boolean twoHanded;
 
-	@Column(nullable = true)
+	@Column
 	@Nullable
 	private String versatile;
 
@@ -103,9 +104,9 @@ public class Weapon extends BaseEntity {
 		this.name = name;
 		this.price = price;
 		this.damage = damage;
-		this.dmg_type = dmg_type;
+		this.damageType = dmg_type;
 		this.weight = weight;
-		this.wpn_type = wpn_type;
+		this.weaponType = wpn_type;
 		this.ammunition = ammunition;
 		this.finesse = finesse;
 		this.heavy = heavy;
@@ -114,7 +115,7 @@ public class Weapon extends BaseEntity {
 		this.reach = reach;
 		this.special = special;
 		this.thrown = thrown;
-		this.two_handed = two_handed;
+		this.twoHanded = two_handed;
 		this.versatile = versatile;
 	}
 }

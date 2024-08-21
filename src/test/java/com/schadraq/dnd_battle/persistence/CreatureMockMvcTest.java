@@ -81,16 +81,16 @@ public class CreatureMockMvcTest extends PersistenceTest {
 //		ChallengeRating cr = berserker.getCr();
 //		CreatureSize size = berserker.getSize();
 //		CreatureFamily family = berserker.getFamily();
-		CreatureTemplate c = new CreatureTemplate(UUID.randomUUID(), "Special Orc", berserker.getFamily_id(), berserker.getCreature_size_id(), "CG", (short)40, (short)0, (short)0, (short)0, (short)0,
+		CreatureTemplate c = new CreatureTemplate(UUID.randomUUID(), "Special Orc", berserker.getFamilyId(), berserker.getSizeId(), "CG", (short)40, (short)0, (short)0, (short)0, (short)0,
 				(short)19, (short)8, (short)16, (short)5, (short)7, (short)7, (short)59, "7d10 + 21", (short)11, (short)2,
-				berserker.getChallenge_rating_id(), false, false, false, false, false, false, "none", "none", "none",
+				berserker.getChallengeRatingId(), false, false, false, false, false, false, "none", "none", "none",
 				"none", "none", "none", "none", "none", "none", "none", "none", "none", "none",
 				"none", "none", "none", "none", "none", "none", "none", "none", "none", "none",
 				"none", "none", "none", "none", "none", "none", "none", "none", "none", "none",
 				"none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none");
     	CreatureTemplate record = createRecord(false, repo, c);
     	if (record != null) {
-    		readRecord(true, repo, record, (found) -> {assertEquals(record.getName(), found.getName());assertEquals(record.getFamily_id(), found.getFamily_id());} );
+    		readRecord(true, repo, record, (found) -> {assertEquals(record.getName(), found.getName());assertEquals(record.getFamilyId(), found.getFamilyId());} );
     	}
     }
 }

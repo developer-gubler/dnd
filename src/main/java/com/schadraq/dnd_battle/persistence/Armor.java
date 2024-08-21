@@ -3,9 +3,9 @@ package com.schadraq.dnd_battle.persistence;
 import java.math.BigDecimal;
 import java.util.UUID;
 
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.lang.NonNull;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,44 +20,44 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 public class Armor extends BaseEntity {
 
-	@Id @GeneratedValue(strategy = GenerationType.UUID)
+	@Id @org.springframework.data.annotation.Id @GeneratedValue(strategy = GenerationType.UUID)
 	private UUID id;
 
-	@Column(nullable = false, unique = true)
+	@Column
 	@NotBlank
 	private String name;
-	
-	@Column(nullable = false)
+
+	@Column
 	@Min(value = 0)
 	private Long price;
-	
-	@Column(nullable = false)
+
+	@Column
 	@Min(value = 0)
 	private BigDecimal weight;
-	
-	@Column(nullable = false)
+
+	@Column
 	@NotBlank
 	private String type;
-	
-	@Column(nullable = false)
+
+	@Column
 	@Min(value = 0)
 	private Short ac;
 
-	@Column(nullable = false)
+	@Column(value = "add_dex")
 	@NonNull
-	private Boolean add_dex;
-	
-	@Column(nullable = false)
-	@Min(value = 0)
-	private Short max_dex_bonus;
-	
-	@Column(nullable = false)
-	@Min(value = 0)
-	private Short str_req;
+	private Boolean addDex;
 
-	@Column(nullable = false)
+	@Column(value = "max_dex_bonus")
+	@Min(value = 0)
+	private Short maxDexBonus;
+
+	@Column(value = "str_req")
+	@Min(value = 0)
+	private Short strReq;
+
+	@Column(value = "stealth_disadvantage")
 	@NonNull
-	private Boolean stealth_disadvantage;
+	private Boolean stealthDisadvantage;
 
 	protected Armor() {
 		
@@ -74,9 +74,9 @@ public class Armor extends BaseEntity {
 		this.weight = weight;
 		this.type = type;
 		this.ac = ac;
-		this.add_dex = add_dex;
-		this.max_dex_bonus = max_dex_bonus;
-		this.str_req = str_req;
-		this.stealth_disadvantage = stealth_disadvantage;
+		this.addDex = add_dex;
+		this.maxDexBonus = max_dex_bonus;
+		this.strReq = str_req;
+		this.stealthDisadvantage = stealth_disadvantage;
 	}
 }

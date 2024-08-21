@@ -2,15 +2,13 @@ package com.schadraq.dnd_battle.persistence;
 
 import java.util.UUID;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -23,7 +21,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 public class BattleParticipant extends BaseEntity {
 
-	@Id @GeneratedValue(strategy = GenerationType.UUID)
+	@Id @org.springframework.data.annotation.Id @GeneratedValue(strategy = GenerationType.UUID)
 	private UUID id;
 
 	/**
@@ -33,9 +31,9 @@ public class BattleParticipant extends BaseEntity {
 	 * 		 is created with the foreign key and the database (instead of the
 	 * 		 application) can still enforce the relation.
 	 */
-	@Column(nullable = false)
+	@Column(value = "battle_id")
 	@NotNull
-	private UUID battle_id;
+	private UUID battleId;
 
 	/**
 	 * NOTE: R2DBC does NOT support relations  (ie foreign key definitions).
@@ -44,19 +42,19 @@ public class BattleParticipant extends BaseEntity {
 	 * 		 is created with the foreign key and the database (instead of the
 	 * 		 application) can still enforce the relation.
 	 */
-	@Column(nullable = false)
+	@Column(value = "template_id")
 	@NotNull
-	private UUID template_id;
+	private UUID templateId;
 
-	@Column(nullable = false)
+	@Column
 	@NotNull
     @Positive
 	private Short initiative;
 
-	@Column(nullable = false)
+	@Column(value = "hit_points")
 	@NotNull
     @Min(value = 0)
-	private Short hit_points;
+	private Short hitPoints;
 
 	protected BattleParticipant() {
 		
@@ -68,9 +66,9 @@ public class BattleParticipant extends BaseEntity {
 
 	public BattleParticipant(UUID id, UUID battle_id, UUID template_id, Short initiative, Short hit_points) {
 		this.id = id;
-		this.battle_id = battle_id;
-		this.template_id = template_id;
+		this.battleId = battle_id;
+		this.templateId = template_id;
 		this.initiative = initiative;
-		this.hit_points = hit_points;
+		this.hitPoints = hit_points;
 	}
 }

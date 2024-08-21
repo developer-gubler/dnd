@@ -2,12 +2,13 @@ package com.schadraq.dnd_battle.persistence;
 
 import java.util.UUID;
 
-import jakarta.persistence.Column;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -25,10 +26,10 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 public class CreatureTemplate extends BaseEntity {
 
-	@Id @GeneratedValue(strategy = GenerationType.UUID)
+	@Id @org.springframework.data.annotation.Id @GeneratedValue(strategy = GenerationType.UUID)
 	private UUID id;
 	
-	@Column(nullable = false, unique = true)
+	@Column
 	@NotNull(message = "Name must be between 1 to 32 characters")
 	@Size(min = 1, max = 32)
 	private String name;
@@ -40,9 +41,9 @@ public class CreatureTemplate extends BaseEntity {
 	 * 		 is created with the foreign key and the database (instead of the
 	 * 		 application) can still enforce the relation.
 	 */
-	@Column(nullable = false)
+	@Column(value = "family_id")
 	@NotNull
-	private UUID family_id;
+	private UUID familyId;
 
 	/**
 	 * NOTE: R2DBC does NOT support relations  (ie foreign key definitions).
@@ -51,73 +52,73 @@ public class CreatureTemplate extends BaseEntity {
 	 * 		 is created with the foreign key and the database (instead of the
 	 * 		 application) can still enforce the relation.
 	 */
-	@Column(nullable = false)
+	@Column(value = "size_id")
 	@NotNull
-	private UUID creature_size_id;
+	private UUID sizeId;
 	
-	@Column(nullable = false)
+	@Column
 	@NotBlank
 	private String alignment;
 
-	@Column(nullable = false)
+	@Column(value = "speed_walk")
     @Min(value = 0, message = "Walking speed cannot be less than 0")
-	private Short speed_walk;
+	private Short speedWalk;
 
-	@Column(nullable = false)
+	@Column(value = "speed_burrow")
     @Min(value = 0, message = "Burrowing speed cannot be less than 0")
-	private Short speed_burrow;
+	private Short speedBurrow;
 
-	@Column(nullable = false)
+	@Column(value = "speed_climb")
     @Min(value = 0, message = "Climbing speed cannot be less than 0")
-	private Short speed_climb;
+	private Short speedClimb;
 
-	@Column(nullable = false)
+	@Column(value = "speed_fly")
     @Min(value = 0, message = "Flying speed cannot be less than 0")
-	private Short speed_fly;
+	private Short speedFly;
 
-	@Column(nullable = false)
+	@Column(value = "speed_swim")
     @Min(value = 0, message = "Swimming speed cannot be less than 0")
-	private Short speed_swim;
+	private Short speedSwim;
 
-	@Column(nullable = false)
+	@Column
     @Positive
 	private Short str;
 
-	@Column(nullable = false)
+	@Column
     @Positive
 	private Short dex;
 
-	@Column(nullable = false)
+	@Column
     @Positive
 	private Short con;
 
-	@Column(name = "int", nullable = false)
+	@Column(value = "int")
     @Positive
 	private Short intelligence;
 
-	@Column(nullable = false)
+	@Column
     @Positive
 	private Short wis;
 
-	@Column(nullable = false)
+	@Column
     @Positive
 	private Short cha;
 
-	@Column(nullable = false)
+	@Column(value = "hit_points")
     @Positive
-	private Short hit_points;
+	private Short hitPoints;
 	
-	@Column(nullable = false)
+	@Column(value = "hit_dice")
 	@NotBlank
-	private String hit_dice;
+	private String hitDice;
 
-	@Column(nullable = false)
+	@Column(value = "armor_class")
     @Positive
-	private Short armor_class;
+	private Short armorClass;
 
-	@Column(nullable = false)
+	@Column(value = "proficiency_bonus")
     @Positive
-	private Short proficiency_bonus;
+	private Short proficiencyBonus;
 
 	/**
 	 * NOTE: R2DBC does NOT support relations  (ie foreign key definitions).
@@ -126,209 +127,209 @@ public class CreatureTemplate extends BaseEntity {
 	 * 		 is created with the foreign key and the database (instead of the
 	 * 		 application) can still enforce the relation.
 	 */
-	@Column(nullable = false)
+	@Column(value = "challenge_rating_id")
 	@NotNull
-	private UUID challenge_rating_id;
+	private UUID challengeRatingId;
 
-	@Column(nullable = false)
+	@Column(value = "save_str")
 	@NotNull
-	private Boolean save_str;
+	private Boolean saveStr;
 
-	@Column(nullable = false)
+	@Column(value = "save_dex")
 	@NotNull
-	private Boolean save_dex;
+	private Boolean saveDex;
 
-	@Column(nullable = false)
+	@Column(value = "save_con")
 	@NotNull
-	private Boolean save_con;
+	private Boolean saveCon;
 
-	@Column(nullable = false)
+	@Column(value = "save_int")
 	@NotNull
-	private Boolean save_int;
+	private Boolean saveInt;
 
-	@Column(nullable = false)
+	@Column(value = "save_wis")
 	@NotNull
-	private Boolean save_wis;
+	private Boolean saveWis;
 
-	@Column(nullable = false)
+	@Column(value = "save_cha")
 	@NotNull
-	private Boolean save_cha;
+	private Boolean saveCha;
 	
-	@Column(nullable = false)
+	@Column
 	@NotBlank
 	private String acrobatics;
 	
-	@Column(nullable = false)
+	@Column(value = "animal_handling")
 	@NotBlank
-	private String animal_handling;
+	private String animalHandling;
 	
-	@Column(nullable = false)
+	@Column
 	@NotBlank
 	private String arcana;
 	
-	@Column(nullable = false)
+	@Column
 	@NotBlank
 	private String athletics;
 	
-	@Column(nullable = false)
+	@Column
 	@NotBlank
 	private String deception;
 	
-	@Column(nullable = false)
+	@Column
 	@NotBlank
 	private String history;
 	
-	@Column(nullable = false)
+	@Column
 	@NotBlank
 	private String insight;
 	
-	@Column(nullable = false)
+	@Column
 	@NotBlank
 	private String intimidation;
 	
-	@Column(nullable = false)
+	@Column
 	@NotBlank
 	private String investigation;
 	
-	@Column(nullable = false)
+	@Column
 	@NotBlank
 	private String medicine;
 	
-	@Column(nullable = false)
+	@Column
 	@NotBlank
 	private String nature;
 	
-	@Column(nullable = false)
+	@Column
 	@NotBlank
 	private String perception;
 	
-	@Column(nullable = false)
+	@Column
 	@NotBlank
 	private String performance;
 	
-	@Column(nullable = false)
+	@Column
 	@NotBlank
 	private String persuasion;
 	
-	@Column(nullable = false)
+	@Column
 	@NotBlank
 	private String religion;
 	
-	@Column(nullable = false)
+	@Column(value = "sleight_of_hand")
 	@NotBlank
-	private String sleight_of_hand;
+	private String sleightOfHand;
 	
-	@Column(nullable = false)
+	@Column
 	@NotBlank
 	private String stealth;
 	
-	@Column(nullable = false)
+	@Column
 	@NotBlank
 	private String survival;
 	
-	@Column(nullable = false)
+	@Column(value = "alchemists_supplies")
 	@NotBlank
-	private String alchemists_supplies;
+	private String alchemistsSupplies;
 	
-	@Column(nullable = false)
+	@Column(value = "brewers_supplies")
 	@NotBlank
-	private String brewers_supplies;
+	private String brewersSupplies;
 	
-	@Column(nullable = false)
+	@Column(value = "calligraphers_supplies")
 	@NotBlank
-	private String calligraphers_supplies;
+	private String calligraphersSupplies;
 	
-	@Column(nullable = false)
+	@Column(value = "carpenters_tools")
 	@NotBlank
-	private String carpenters_tools;
+	private String carpentersTools;
 	
-	@Column(nullable = false)
+	@Column(value = "cartographer_tools")
 	@NotBlank
-	private String cartographer_tools;
+	private String cartographerTools;
 	
-	@Column(nullable = false)
+	@Column(value = "cobblers_tools")
 	@NotBlank
-	private String cobblers_tools;
+	private String cobblersTools;
 	
-	@Column(nullable = false)
+	@Column(value = "cooks_utensils")
 	@NotBlank
-	private String cooks_utensils;
+	private String cooksUtensils;
 	
-	@Column(nullable = false)
+	@Column(value = "disguise_kit")
 	@NotBlank
-	private String disguise_kit;
+	private String disguiseKit;
 	
-	@Column(nullable = false)
+	@Column(value = "forgery_kit")
 	@NotBlank
-	private String forgery_kit;
+	private String forgeryKit;
 	
-	@Column(nullable = false)
+	@Column(value = "gaming_set")
 	@NotBlank
-	private String gaming_set;
+	private String gamingSet;
 	
-	@Column(nullable = false)
+	@Column(value = "glassblowers_tools")
 	@NotBlank
-	private String glassblowers_tools;
+	private String glassblowersTools;
 	
-	@Column(nullable = false)
+	@Column(value = "herbalism_kit")
 	@NotBlank
-	private String herbalism_kit;
+	private String herbalismKit;
 	
-	@Column(nullable = false)
+	@Column(value = "jewelers_tools")
 	@NotBlank
-	private String jewelers_tools;
+	private String jewelersTools;
 	
-	@Column(nullable = false)
+	@Column(value = "land_and_water_vehicles")
 	@NotBlank
-	private String land_and_water_vehicles;
+	private String landAndWaterVehicles;
 	
-	@Column(nullable = false)
+	@Column(value = "leatherworkers_tools")
 	@NotBlank
-	private String leatherworkers_tools;
+	private String leatherworkersTools;
 	
-	@Column(nullable = false)
+	@Column(value = "masons_tools")
 	@NotBlank
-	private String masons_tools;
+	private String masonsTools;
 	
-	@Column(nullable = false)
+	@Column(value = "musical_instrument")
 	@NotBlank
-	private String musical_instrument;
+	private String musicalInstrument;
 	
-	@Column(nullable = false)
+	@Column(value = "navigators_tools")
 	@NotBlank
-	private String navigators_tools;
+	private String navigatorsTools;
 	
-	@Column(nullable = false)
+	@Column(value = "painters_supplies")
 	@NotBlank
-	private String painters_supplies;
+	private String paintersSupplies;
 	
-	@Column(nullable = false)
+	@Column(value = "poisoners_kit")
 	@NotBlank
-	private String poisoners_kit;
+	private String poisonersKit;
 	
-	@Column(nullable = false)
+	@Column(value = "potters_tools")
 	@NotBlank
-	private String potters_tools;
+	private String pottersTools;
 	
-	@Column(nullable = false)
+	@Column(value = "smiths_tools")
 	@NotBlank
-	private String smiths_tools;
+	private String smithsTools;
 	
-	@Column(nullable = false)
+	@Column(value = "thieves_tools")
 	@NotBlank
-	private String thieves_tools;
+	private String thievesTools;
 	
-	@Column(nullable = false)
+	@Column(value = "tinkers_tools")
 	@NotBlank
-	private String tinkers_tools;
+	private String tinkersTools;
 	
-	@Column(nullable = false)
+	@Column(value = "weavers_tools")
 	@NotBlank
-	private String weavers_tools;
+	private String weaversTools;
 	
-	@Column(nullable = false)
+	@Column(value = "woodcarvers_tools")
 	@NotBlank
-	private String woodcarvers_tools;
+	private String woodcarversTools;
 
 	protected CreatureTemplate() {
 		
@@ -350,33 +351,33 @@ public class CreatureTemplate extends BaseEntity {
 			String potters_tools, String smiths_tools, String thieves_tools, String tinkers_tools,
 			String weavers_tools, String woodcarvers_tools) {
 		this.name = name;
-		this.family_id = family_id;
-		this.creature_size_id = creature_size_id;
+		this.familyId = family_id;
+		this.sizeId = creature_size_id;
 		this.alignment = alignment;
-		this.speed_walk = speed_walk;
-		this.speed_burrow = speed_burrow;
-		this.speed_climb = speed_climb;
-		this.speed_fly = speed_fly;
-		this.speed_swim = speed_swim;
+		this.speedWalk = speed_walk;
+		this.speedBurrow = speed_burrow;
+		this.speedClimb = speed_climb;
+		this.speedFly = speed_fly;
+		this.speedSwim = speed_swim;
 		this.str = str;
 		this.dex = dex;
 		this.con = con;
 		this.intelligence = intelligence;
 		this.wis = wis;
 		this.cha = cha;
-		this.hit_points = hit_points;
-		this.hit_dice = hit_dice;
-		this.armor_class = armor_class;
-		this.proficiency_bonus = proficiency_bonus;
-		this.challenge_rating_id = challenge_rating_id;
-		this.save_str = save_str;
-		this.save_dex = save_dex;
-		this.save_con = save_con;
-		this.save_int = save_int;
-		this.save_wis = save_wis;
-		this.save_cha = save_cha;
+		this.hitPoints = hit_points;
+		this.hitDice = hit_dice;
+		this.armorClass = armor_class;
+		this.proficiencyBonus = proficiency_bonus;
+		this.challengeRatingId = challenge_rating_id;
+		this.saveStr = save_str;
+		this.saveDex = save_dex;
+		this.saveCon = save_con;
+		this.saveInt = save_int;
+		this.saveWis = save_wis;
+		this.saveCha = save_cha;
 		this.acrobatics = acrobatics;
-		this.animal_handling = animal_handling;
+		this.animalHandling = animal_handling;
 		this.arcana = arcana;
 		this.athletics = athletics;
 		this.deception = deception;
@@ -390,35 +391,35 @@ public class CreatureTemplate extends BaseEntity {
 		this.performance = performance;
 		this.persuasion = persuasion;
 		this.religion = religion;
-		this.sleight_of_hand = sleight_of_hand;
+		this.sleightOfHand = sleight_of_hand;
 		this.stealth = stealth;
 		this.survival = survival;
-		this.alchemists_supplies = alchemists_supplies;
-		this.brewers_supplies = brewers_supplies;
-		this.calligraphers_supplies = calligraphers_supplies;
-		this.carpenters_tools = carpenters_tools;
-		this.cartographer_tools = cartographer_tools;
-		this.cobblers_tools = cobblers_tools;
-		this.cooks_utensils = cooks_utensils;
-		this.disguise_kit = disguise_kit;
-		this.forgery_kit = forgery_kit;
-		this.gaming_set = gaming_set;
-		this.glassblowers_tools = glassblowers_tools;
-		this.herbalism_kit = herbalism_kit;
-		this.jewelers_tools = jewelers_tools;
-		this.land_and_water_vehicles = land_and_water_vehicles;
-		this.leatherworkers_tools = leatherworkers_tools;
-		this.masons_tools = masons_tools;
-		this.musical_instrument = musical_instrument;
-		this.navigators_tools = navigators_tools;
-		this.painters_supplies = painters_supplies;
-		this.poisoners_kit = poisoners_kit;
-		this.potters_tools = potters_tools;
-		this.smiths_tools = smiths_tools;
-		this.thieves_tools = thieves_tools;
-		this.tinkers_tools = tinkers_tools;
-		this.weavers_tools = weavers_tools;
-		this.woodcarvers_tools = woodcarvers_tools;
+		this.alchemistsSupplies = alchemists_supplies;
+		this.brewersSupplies = brewers_supplies;
+		this.calligraphersSupplies = calligraphers_supplies;
+		this.carpentersTools = carpenters_tools;
+		this.cartographerTools = cartographer_tools;
+		this.cobblersTools = cobblers_tools;
+		this.cooksUtensils = cooks_utensils;
+		this.disguiseKit = disguise_kit;
+		this.forgeryKit = forgery_kit;
+		this.gamingSet = gaming_set;
+		this.glassblowersTools = glassblowers_tools;
+		this.herbalismKit = herbalism_kit;
+		this.jewelersTools = jewelers_tools;
+		this.landAndWaterVehicles = land_and_water_vehicles;
+		this.leatherworkersTools = leatherworkers_tools;
+		this.masonsTools = masons_tools;
+		this.musicalInstrument = musical_instrument;
+		this.navigatorsTools = navigators_tools;
+		this.paintersSupplies = painters_supplies;
+		this.poisonersKit = poisoners_kit;
+		this.pottersTools = potters_tools;
+		this.smithsTools = smiths_tools;
+		this.thievesTools = thieves_tools;
+		this.tinkersTools = tinkers_tools;
+		this.weaversTools = weavers_tools;
+		this.woodcarversTools = woodcarvers_tools;
 	}
 
 	public CreatureTemplate(UUID id, String name, UUID family_id, UUID creature_size_id, String alignment,

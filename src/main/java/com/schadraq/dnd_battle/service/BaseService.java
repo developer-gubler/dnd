@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Validator;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * NOTE: Business logic is stored in the service layer. It includes validation
@@ -26,6 +27,7 @@ import jakarta.validation.Validator;
  *       this case, we’ll use the standard Java JSR-303 validation scheme.
  */
 @Service
+@Slf4j
 public abstract class BaseService {
 
     @Autowired

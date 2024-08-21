@@ -5,6 +5,8 @@ import java.util.UUID;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
+import com.schadraq.dnd_battle.service.BaseService;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,10 +16,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Entity
-@Table(name = "condition")
+@Table(name = "creature_weapon_xref")
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class Condition extends BaseEntity {
+public class CreatureWeaponXref extends BaseService {
 
 	@Id @org.springframework.data.annotation.Id @GeneratedValue(strategy = GenerationType.UUID)
 	private UUID id;
@@ -29,24 +31,18 @@ public class Condition extends BaseEntity {
 	 * 		 is created with the foreign key and the database (instead of the
 	 * 		 application) can still enforce the relation.
 	 */
-	@Column(value = "battle_id")
+	@Column(value = "creature_id")
 	@NotNull
-	private UUID battleId;
+	private UUID creatureId;
 
-//	private BattleParticipant source;
-//
-//	private List<BattleParticipant> target;
-
-	protected Condition() {
-		
-	}
-
-	public Condition(UUID battle_id) {
-		this(UUID.randomUUID(), battle_id);
-	}
-
-	public Condition(UUID id, UUID battle_id) {
-		this.id = id;
-		this.battleId = battle_id;
-	}
+	/**
+	 * NOTE: R2DBC does NOT support relations  (ie foreign key definitions).
+	 * 		 As a result, I had to change this to just a UUID.  It is important
+	 * 		 to create your tables outside of JPA so that the table
+	 * 		 is created with the foreign key and the database (instead of the
+	 * 		 application) can still enforce the relation.
+	 */
+	@Column(value = "weapon_id")
+	@NotNull
+	private UUID weaponId;
 }
