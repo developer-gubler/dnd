@@ -524,6 +524,9 @@ INSERT INTO creature_armor_proficiency
 VALUES (random_uuid(), '5091265c-1645-47f2-8f1f-381b899085ad', 'light');
 
 INSERT INTO creature_armor_proficiency
+VALUES (random_uuid(), '5091265c-1645-47f2-8f1f-381b899085ad', 'medium');
+
+INSERT INTO creature_armor_proficiency
 VALUES (random_uuid(), '28e75eed-ce58-4ec8-8faa-58c62dd29c1b', 'light');
 
 INSERT INTO creature_armor_xref

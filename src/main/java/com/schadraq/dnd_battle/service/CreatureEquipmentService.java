@@ -44,10 +44,9 @@ public class CreatureEquipmentService extends BaseService {
 	private CreatureWeaponXrefRepository repoCreatureWeaponXref;
 
 	public Flux<String> getCreatureArmorProficiency(@RequestParam UUID creature_id) {
-		Flux<CreatureArmorProficiency> list = repoCreatureArmorProficiency.findAllByCreatureId(creature_id);
-		return Flux.fromStream(
-				list.toStream()
-					.map(i -> i.getType()));
+		return repoCreatureArmorProficiency
+				.findAllByCreatureId(creature_id)
+				.map(i -> i.getType());
 	}
 
 	public Flux<Armor> getCreatureArmorList(@RequestParam UUID creature_id) {
