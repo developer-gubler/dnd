@@ -13,8 +13,6 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -43,7 +41,6 @@ import lombok.extern.slf4j.Slf4j;
 @Testcontainers
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
 @TestMethodOrder(OrderAnnotation.class)			// NOTE: This is important because the results of test 3 are dependent on test 2 having put the value into the database.
-@Sql(scripts = {"/schema-postgresql.sql", "/data-postgresql.sql"}, executionPhase = ExecutionPhase.BEFORE_TEST_CLASS)
 @ActiveProfiles("test")
 @Slf4j
 public class CreatureControllerContainerTests extends PersistenceTest {
@@ -53,7 +50,8 @@ public class CreatureControllerContainerTests extends PersistenceTest {
 	private static PostgreSQLContainer<?> postgresqlContainer = new PostgreSQLContainer<>(DockerImageName.parse("postgres:latest"))
 																	.withDatabaseName("dnd-database")
 																	.withUsername("dnd-user")
-																	.withPassword("dnd-secret");
+																	.withPassword("dnd-secret")
+																	.withExposedPorts(5432);
 
 	@LocalServerPort
 	private int port;
@@ -98,7 +96,7 @@ public class CreatureControllerContainerTests extends PersistenceTest {
 
 		log.info(this.restTemplate.getForObject("http://localhost:" + port + "/api/dnd/creature/families", String.class));
 		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/dnd/creature/families",
-				String.class)).contains("Aberration");
+				String.class)).contains("Titan");
 	}
 
 	@Test
@@ -120,16 +118,16 @@ public class CreatureControllerContainerTests extends PersistenceTest {
 	@Test
 	void test_retrieve_valid_single_creature() throws Exception {
 
-		log.info(this.restTemplate.getForObject("http://localhost:" + port + "/api/dnd/creature/template?id=5091265c-1645-47f2-8f1f-381b899085ad", String.class));
-		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/dnd/creature/template?id=5091265c-1645-47f2-8f1f-381b899085ad",
+		log.info(this.restTemplate.getForObject("http://localhost:" + port + "/api/dnd/creature/template?creature_id=5091265c-1645-47f2-8f1f-381b899085ad", String.class));
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/dnd/creature/template?creature_id=5091265c-1645-47f2-8f1f-381b899085ad",
 				String.class)).contains("Ogre");
 	}
 
 	@Test
 	void test_retrieve_invalid_single_creature() throws Exception {
 
-		log.info(this.restTemplate.getForObject("http://localhost:" + port + "/api/dnd/creature/template?id=5091265c-1645-47f2-8f1f-381b899085a", String.class));
-		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/dnd/creature/template?id=5091265c-1645-47f2-8f1f-381b899085a",
-				String.class)).contains("");
+		log.info(this.restTemplate.getForObject("http://localhost:" + port + "/api/dnd/creature/template?creature_id=5091265c-1645-47f2-8f1f-381b899085a", String.class));
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/dnd/creature/template?creature_id=5091265c-1645-47f2-8f1f-381b899085a",
+				String.class)).isNull();
 	}
 }
