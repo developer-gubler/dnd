@@ -23,9 +23,10 @@ Suggested mechanism for getting the project running (NOTE: writing this from mem
 - import collection located in the project postman directory
 - begin testing!
 
-NOTE: I realize this is going to be a huge project, but I have never let anything like that stop me.  How do you eat an elephant? One bite at a time.
-NOTE: There really isn't much functionality to the project at this time.  So far, I have really just been setting the project up for future success.  However, it does have the ability to look at a sample list of creatures.
-NOTE: The command above [mvnw clean package -Dtest="CreatureControllerContainerTests"] contains the -Dtest because the project is currently set to use Testcontainers as the testing style -- if we leave that off, then the build fails because it tries to run ALL tests. The other tests are for the embedded H2 database while running not in a container
+Note(s):
+- I realize this is going to be a huge project, but I have never let anything like that stop me.  How do you eat an elephant? One bite at a time.
+- There really isn't much functionality to the project at this time.  So far, I have really just been setting the project up for future success.  However, it does have the ability to look at a sample list of creatures.
+- The command above [mvnw clean package -Dtest="CreatureControllerContainerTests"] contains the -Dtest because the project is currently set to use Testcontainers as the testing style -- if we leave that off, then the build fails because it tries to run ALL 4 styles of tests. The other tests are for the embedded H2 database while running not in a container
 
 Currently there are two branches for this code:
 1) Non-Reactive branch is the "main" branch
@@ -44,7 +45,7 @@ Current Features:
 
 Future Features:
 1) TLS
-2) Loose coupling via Kafka/RabbitMQ
+2) When the battle functionality is added, it will be done using loose-coupling via Kafka/RabbitMQ. Loose-coupling is best utilized in situations where there are limited resources - in this case, hit points will be the resource that is limited.
 3) Add additional testing style for Behavior Driven Development (BDD) leveraging Cucumber
 4) Registering an account
 5) Logging into application
