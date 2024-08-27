@@ -1,9 +1,9 @@
 Purpose(s):
-1) Create something that a D&D Dungeon Master can use to:
+1) Just to create a project for display as part of my portfolio.
+2) Create something that a D&D Dungeon Master can use to:
     - Track hit points, conditions, etc of players and creatures -- if one creature/player has concentration and is tied to a condition, then both are tracked
     - Track round and initiative
     - Possibility of adding automated rolling of dice
-2) Just to create a project for display as part of my portfolio.
 
 Suggested mechanism for getting the project running (NOTE: writing this from memory and I tend to gloss over some instructions that some people may need more details on -- because I am doing this from memory, some of these instructions are high level and may not make much sense unless you are already familiar with this sort of thing):
 - Install Chocolatey or Homebrew (ie this is a Package Manager - Chocolatey is Windows, Homebrew is Mac)

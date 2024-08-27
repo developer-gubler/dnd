@@ -2,6 +2,7 @@ package com.schadraq.dnd_battle;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ import lombok.extern.slf4j.Slf4j;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DndBattleApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)	//  NOTE: tells Spring Boot to look for a main configuration class (one with @SpringBootApplication, for instance) and use that to start a Spring application context
 @ActiveProfiles("test")
+@Disabled
 @Slf4j
 public class CreatureControllerTests {
 

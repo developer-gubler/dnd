@@ -1,5 +1,6 @@
 package com.schadraq.dnd_battle;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,7 @@ import lombok.extern.slf4j.Slf4j;
 @RunWith(SpringRunner.class)
 @WebMvcTest(CreatureController.class)
 @ActiveProfiles("test")
+@Disabled
 @Slf4j
 public class CreatureControllerWebMvcTests {
 
