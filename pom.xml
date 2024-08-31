@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.2</version>
+		<version>3.3.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.schadraq</groupId>
-	<artifactId>dnd-battle</artifactId>
+	<artifactId>dnd</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>dnd-battle</name>
-	<description>D&amp;D Battle</description>
+	<name>dnd</name>
+	<description>D&amp;D</description>
 	<url/>
 	<licenses>
 		<license/>
