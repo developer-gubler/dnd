@@ -597,7 +597,7 @@
 		},
 		{
 			"key": "dnd_base_url",
-			"value": "http://localhost:8080",
+			"value": "http://localhost:8081",
 			"type": "string"
 		}
 	]

@@ -1,46 +1,16 @@
+version: “3.7”
+name: dnd 
 services:
-  dnd-database:
-    container_name: 'dnd-database'
-    image: 'postgres:latest'
-    environment:
-      - 'POSTGRES_DB=dnd-database'
-      - 'POSTGRES_PASSWORD=dnd-secret'
-      - 'POSTGRES_USER=dnd-user'
-    ports:
-      - '5432'
-    networks:
-      - dnd-network
-  dnd-pgadmin:
-    container_name: 'dnd-pgadmin'
-    image: 'dpage/pgadmin4:latest'
-    environment:
-      - 'PGADMIN_DEFAULT_EMAIL=developer.gubler@gmail.com'
-      - 'PGADMIN_DEFAULT_PASSWORD=letmein'
-      - 'PGADMIN_LISTEN_PORT=5050'
-    ports:
-      - '5051:5050'
-    networks:
-      - dnd-network
-    depends_on:
-      - dnd-database
-  dnd:
-    container_name: dnd
+  dnd_api-reader:
+    container_name: dnd_api-reader
     build:
       context: .
       dockerfile: Dockerfile
-    image: dnd:latest
+    image: dnd-api-reader:latest
     ports:
       - 8081:8080
-      - 8443:8443
     networks:
-      - dnd-network
-    depends_on:
-        - dnd-database
-    environment:
-      - SPRING_R2DBC_URL=r2dbc:postgresql://dnd-database:5432/dnd-database
-      - SPRING_R2DBC_USERNAME=dnd-user
-      - SPRING_R2DBC_PASSWORD=dnd-secret
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - dnd_network
 networks:
-  dnd-network:
-    driver: bridge
+  dnd_network:
+    external: true

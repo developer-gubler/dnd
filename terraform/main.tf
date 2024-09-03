@@ -12,7 +12,7 @@ provider "docker" {
 }
 
 resource "docker_network" "private_network" {
-  name = "dnd-network"
+  name = "dnd_network"
 }
 
 # Pulls the postgres image
@@ -23,7 +23,7 @@ resource "docker_image" "postgres" {
 # Create a postgres container
 resource "docker_container" "postgres" {
   image = docker_image.postgres.image_id
-  name  = "dnd-database"
+  name  = "dnd_database"
   networks_advanced {
     name = docker_network.private_network.name
   }
@@ -39,7 +39,7 @@ resource "docker_image" "pgadmin" {
 # Create a pgadmin container
 resource "docker_container" "pgadmin" {
   image = docker_image.pgadmin.image_id
-  name  = "pgadmin"
+  name  = "dnd_pgadmin"
   ports {
     internal = 5050
     external = 5050

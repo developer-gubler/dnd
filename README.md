@@ -12,13 +12,16 @@ Suggested mechanism for getting the project running (NOTE: writing this from mem
 - Install Postman via Chocolatey/Homebrew
 - Start Docker Desktop
 - Download this project
-- mvnw clean package -Dtest="CreatureControllerContainerTests"
-- mvnw spring-boot:run
-- docker network inspect dnd-battle_dnd-battle-network
+- navigate to the terraform directory
+- terraform init
+- terraform apply
+- docker network inspect dnd_network
 - look for the dnd-database entry and take note of the IP address
-- in Docker Desktop, click the link under Port(s) for pgadmin (ie 5051:5050)
-- login to pgadmin using credentials specified in compose.yaml for dnd-battle-pgadmin
-- open Query editor in pgadmin and insert the data from data-postgresql.sql
+- in Docker Desktop, click the link under Port(s) for dnd_pgadmin (ie 5051:5050)
+- login to dnd_pgadmin from Docker Desktop using credentials specified in terraform\main.tf
+- open Query editor in pgadmin and insert the data from src\test\resources\schema-postgresql.sql and src\test\resources\data-postgresql.sql
+- mvnw clean package
+- mvnw spring-boot:run
 - open Postman
 - import collection located in the project postman directory
 - begin testing!
