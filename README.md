@@ -1,5 +1,5 @@
 Purpose(s):
-1) Just to create a project for display as part of my portfolio.
+1) Just to create a project for display as part of my portfolio. Please realize this application is intentionally over-architected for the purpose of displaying my skills.
 2) Create something that a D&D Dungeon Master can use to:
     - Track hit points, conditions, etc of players and creatures -- if one creature/player has concentration and is tied to a condition, then both are tracked
     - Track round and initiative
@@ -26,14 +26,13 @@ Suggested mechanism for getting the project running (NOTE: writing this from mem
 - import collection located in the project postman directory
 - begin testing!
 
-Note(s):
-- I realize this is going to be a huge project, but I have never let anything like that stop me.  How do you eat an elephant? One bite at a time.
-- There really isn't much functionality to the project at this time.  So far, I have really just been setting the project up for future success.  However, it does have the ability to look at a sample list of creatures.
-- The command above [mvnw clean package -Dtest="CreatureControllerContainerTests"] contains the -Dtest because the project is currently set to use Testcontainers as the testing style -- if we leave that off, then the build fails because it tries to run ALL 4 styles of tests. The other tests are for the embedded H2 database while running not in a container
-
 Currently there are two branches for this code:
 1) Non-Reactive branch is the "main" branch
-2) Reactive branch is the "reactive" branch
+2) Reactive branch is the "reactive" branch - this is the current branch that I am working on.
+
+Note(s):
+1) I realize this is going to be a huge project, but I have never let anything like that stop me.  How do you eat an elephant? One bite at a time.
+2) There really isn't much functionality to the project at this time.  So far, I have really just been setting the project up for future success.  However, it does have the ability to look at a sample list of creatures.
 
 Current Features:
 1) Terraform creation of the Docker infrastrusture
@@ -45,13 +44,16 @@ Current Features:
   - Testcontainers (ie Docker)
 4) Automatic database initialization of the schema (ie it does NOT automatically initialize the data -- that must be done manually)
 5) Postman collection of requests
+6) API for a reader application that retrieves Creatures, Equipment, and a cross-reference between Creatures and Equipment.
 
 Future Features:
-1) TLS
-2) When the battle functionality is added, it will be done using loose-coupling via Kafka/RabbitMQ. Loose-coupling is best utilized in situations where there are limited resources - in this case, hit points will be the resource that is limited.
+1) Creating a UI/UX for the reader application
+2) Add battle application
+	- Event Driven Architecture (EDA). Loose-coupling via Kafka/RabbitMQ. Loose-coupling is best utilized in situations where there are limited resources - in this case, hit points will be the resource that is limited.
+	- Registering an account
+	- SSL/TLS
+	- Authentication/Authorization - Logging into application
+	- Adding players to an account
+	- Creating battles associated with an account
+	- Create UI/UX for the battle application
 3) Add additional testing style for Behavior Driven Development (BDD) leveraging Cucumber
-4) Registering an account
-5) Logging into application
-6) Adding players to an account
-7) Creating battles associated with an account
-8) Creating a UI/UX
