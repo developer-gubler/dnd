@@ -12,16 +12,28 @@ Suggested mechanism for getting the project running (NOTE: writing this from mem
 - Install Postman via Chocolatey/Homebrew
 - Start Docker Desktop
 - Download this project
-- navigate to the terraform directory
-- terraform init
-- terraform apply
-- docker network inspect dnd_network
-- look for the dnd-database entry and take note of the IP address
-- in Docker Desktop, click the link under Port(s) for dnd_pgadmin (ie 5051:5050)
-- login to dnd_pgadmin from Docker Desktop using credentials specified in terraform\main.tf
-- open Query editor in pgadmin and insert the data from src\test\resources\schema-postgresql.sql and src\test\resources\data-postgresql.sql
-- mvnw clean package
-- mvnw spring-boot:run
+- at Command Prompt
+	- navigate to the terraform directory of this project
+	- terraform init
+	- terraform apply
+	- docker network inspect dnd_network
+	- look for the dnd-database entry and take note of the IP address
+- in Docker Desktop
+	- click the link under Port(s) for dnd_pgadmin (ie 5051:5050) - this should open pgadmin in your web browser.
+		- login using credentials specified in terraform\main.tf
+		- register a new database using the dnd-database entry from previous step
+		- open Query editor in pgadmin
+		- insert the data from src\test\resources\schema-postgresql.sql
+		- insert the data from src\test\resources\data-postgresql.sql
+- at Command Prompt
+	- navigate to dnd-persistence directory
+	- mvnw clean install -DskipTests
+	- navigate to api-creature-reader directory
+	- mvnw clean package
+	- mvnw spring-boot:run
+	- navigate to api-equipment-reader directory
+	- mvnw clean package
+	- mvnw spring-boot:run
 - open Postman
 - import collection located in the project postman directory
 - begin testing!
@@ -38,18 +50,20 @@ Current Features:
 1) Terraform creation of the Docker infrastrusture
 2) Docker (ie Dockerfile and compose.yaml)
 3) Testing leveraging JUnit in 4 different Test Driven Development (TDD) styles
-  - Standard way that developers normally test (ie all beans autoconfigured, web server, all requests routed through the web server, etc)
-  - Mock MVC (ie all beans autoconfigured, no web server, all requests routed directly to the endpoint, etc)
-  - Web MVC (ie beans are manually configured and responses are configured via Mockito, no web server, all requests routed directly to the endpoint, etc)
-  - Testcontainers (ie Docker)
+  	- Standard way that developers normally test (ie all beans autoconfigured, web server, all requests routed through the web server, etc)
+  	- Mock MVC (ie all beans autoconfigured, no web server, all requests routed directly to the endpoint, etc)
+  	- Web MVC (ie beans are manually configured and responses are configured via Mockito, no web server, all requests routed directly to the endpoint, etc)
+  	- Testcontainers (ie Docker)
 4) Automatic database initialization of the schema (ie it does NOT automatically initialize the data -- that must be done manually)
 5) Postman collection of requests
 6) API for a reader application that retrieves Creatures, Equipment, and a cross-reference between Creatures and Equipment.
 
 Future Features:
+1) Simplify Maven build structure
 1) Creating a UI/UX for the reader application
 2) Add battle application
 	- Event Driven Architecture (EDA). Loose-coupling via Kafka/RabbitMQ. Loose-coupling is best utilized in situations where there are limited resources - in this case, hit points will be the resource that is limited.
+	- Observability
 	- Registering an account
 	- SSL/TLS
 	- Authentication/Authorization - Logging into application

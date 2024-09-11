@@ -1,0 +1,16 @@
+version: “3.7”
+name: dnd 
+services:
+  dnd_api-equipment-reader:
+    container_name: dnd_api-equipment-reader
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: dnd-api-equipment-reader:latest
+    ports:
+      - 8280:8080
+    networks:
+      - dnd_network
+networks:
+  dnd_network:
+    external: true
