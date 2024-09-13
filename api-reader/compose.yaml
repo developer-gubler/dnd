@@ -1,0 +1,16 @@
+version: “3.7”
+name: dnd 
+services:
+  dnd_api-reader:
+    container_name: dnd_api-reader
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: dnd-api-reader:latest
+    ports:
+      - 8081:8080
+    networks:
+      - dnd_network
+networks:
+  dnd_network:
+    external: true

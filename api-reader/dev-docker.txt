@@ -1,0 +1,7 @@
+docker network create dnd-dev-network
+
+docker run --name dnd-dev-database -p 5432:5432 --env POSTGRES_DB=dnd-database --env POSTGRES_PASSWORD=dnd-secret --env POSTGRES_USER=dnd-user --network dnd-dev-network -d postgres:latest
+docker run --name dnd-dev-pgadmin -p 5051:5050 --env PGADMIN_DEFAULT_EMAIL=developer.gubler@gmail.com --env PGADMIN_DEFAULT_PASSWORD=letmein --env PGADMIN_LISTEN_PORT=5050 --network dnd-dev-network -d dpage/pgadmin4:latest
+
+docker build --tag=dnd-dev-battle .
+docker run --name dnd-dev-battle -p 8080:8080 --network dnd-dev-network -d dnd-dev-battle:latest
