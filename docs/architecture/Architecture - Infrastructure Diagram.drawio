@@ -1,348 +1,100 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" version="24.7.10">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" version="24.7.13">
   <diagram name="Page-1" id="sZ1wktzf5g0O1akQcyT5">
     <mxGraphModel dx="1434" dy="746" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="Xx4moLNGxco_7giCoUWo-1" value="" style="shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#4495D1;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.veeam.2d.web_ui;" vertex="1" parent="1">
-          <mxGeometry x="20" y="519.2" width="44.8" height="44.8" as="geometry" />
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-1" value="" style="shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#4495D1;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.veeam.2d.web_ui;" vertex="1" parent="1">
+          <mxGeometry x="30" y="529.2" width="44.8" height="44.8" as="geometry" />
         </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-2" value="GET&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/api/dnd/creature-equipment&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve; background-color: rgb(255, 255, 255);&quot;&gt;/creature-weapon-list&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="1">
-          <mxGeometry x="210" y="1030" width="50" height="48" as="geometry" />
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-2" value="" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/databases/Azure_Database_PostgreSQL_Server.svg;" vertex="1" parent="1">
+          <mxGeometry x="490" y="529.2" width="48" height="64" as="geometry" />
         </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-3" value="GET&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;/api/dnd/equipment&lt;/span&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/weapon-list&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="1">
-          <mxGeometry x="210" y="175" width="50" height="48" as="geometry" />
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Xx4moLNGxco_7giCoUWo-4">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="200" y="120" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-4" value="GET&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;/api/dnd/equipment&lt;/span&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/armor&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="1">
-          <mxGeometry x="210" y="98" width="50" height="48" as="geometry" />
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-5" value="GET&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;/api/dnd/equipment&lt;/span&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/armor-list&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="1">
-          <mxGeometry x="210" y="20" width="50" height="48" as="geometry" />
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-6" value="GET&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;/api/dnd/equipment&lt;/span&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/weapon&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="1">
-          <mxGeometry x="210" y="253" width="50" height="48" as="geometry" />
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-7" value="GET&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;/api/dnd/creature&lt;/span&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/classifications&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="1">
-          <mxGeometry x="210" y="331" width="50" height="48" as="geometry" />
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-8" value="GET&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;/api/dnd/creature&lt;/span&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/families&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="1">
-          <mxGeometry x="210" y="408" width="50" height="48" as="geometry" />
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-9" value="GET&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/api/dnd/creature-equipment&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve; background-color: rgb(255, 255, 255);&quot;&gt;/creature-weapon-proficiency&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="1">
-          <mxGeometry x="210" y="952" width="50" height="48" as="geometry" />
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-10" value="GET&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;/api/dnd/creature&lt;/span&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/challenge-ratings&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="1">
-          <mxGeometry x="210" y="486" width="50" height="48" as="geometry" />
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-11" value="GET&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;/api/dnd/creature&lt;/span&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/sizes&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="1">
-          <mxGeometry x="210" y="564" width="50" height="48" as="geometry" />
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-12" value="GET&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;/api/dnd/creature&lt;/span&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/templates&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="1">
-          <mxGeometry x="210" y="642" width="50" height="48" as="geometry" />
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-13" value="GET&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;/api/dnd/creature&lt;/span&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/template&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="1">
-          <mxGeometry x="210" y="719" width="50" height="48" as="geometry" />
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-14" value="GET&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;/api/dnd/creature-equipment&lt;/span&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/creature-armor-proficiency&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="1">
-          <mxGeometry x="210" y="797" width="50" height="48" as="geometry" />
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-15" value="GET&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/api/dnd/creature-equipment&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve; background-color: rgb(255, 255, 255);&quot;&gt;/creature-armor-list&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="1">
-          <mxGeometry x="210" y="875" width="50" height="48" as="geometry" />
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-16" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;entryX=0.005;entryY=0.63;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="Xx4moLNGxco_7giCoUWo-5">
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-3" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;" edge="1" parent="1" source="84bn8cSFGzSLBoDjGc9c-6" target="84bn8cSFGzSLBoDjGc9c-2">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="20" y="510" as="sourcePoint" />
-            <mxPoint x="80" y="50" as="targetPoint" />
+            <mxPoint x="390" y="210" as="sourcePoint" />
+            <mxPoint x="507" y="768" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="20" y="50" />
+              <mxPoint x="510" y="240" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-17" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;" edge="1" parent="1">
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-4" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;exitX=1;exitY=0.53;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="84bn8cSFGzSLBoDjGc9c-13" target="84bn8cSFGzSLBoDjGc9c-2">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="30" y="510" as="sourcePoint" />
-            <mxPoint x="200" y="120" as="targetPoint" />
+            <mxPoint x="370" y="760" as="sourcePoint" />
+            <mxPoint x="490" y="720" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="30" y="120" />
+              <mxPoint x="380" y="860" />
+              <mxPoint x="510" y="860" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-19" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;entryX=0.005;entryY=0.63;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-5" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="40" y="510" as="sourcePoint" />
-            <mxPoint x="204.8" y="210" as="targetPoint" />
+            <mxPoint x="40" y="529.2" as="sourcePoint" />
+            <mxPoint x="120" y="250" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="40" y="210" />
+              <mxPoint x="40" y="250" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-20" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;" edge="1" parent="1">
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-6" value="api-creature-reader" style="swimlane;startSize=0;" vertex="1" parent="1">
+          <mxGeometry x="140" y="22" width="240" height="490" as="geometry" />
+        </mxCell>
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-7" value="GET&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;/api/dnd/creature&lt;/span&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/classifications&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="84bn8cSFGzSLBoDjGc9c-6">
+          <mxGeometry x="90" y="18" width="50" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-8" value="GET&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;/api/dnd/creature&lt;/span&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/families&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="84bn8cSFGzSLBoDjGc9c-6">
+          <mxGeometry x="90" y="95" width="50" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-9" value="GET&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;/api/dnd/creature&lt;/span&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/challenge-ratings&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="84bn8cSFGzSLBoDjGc9c-6">
+          <mxGeometry x="90" y="173" width="50" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-10" value="GET&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;/api/dnd/creature&lt;/span&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/sizes&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="84bn8cSFGzSLBoDjGc9c-6">
+          <mxGeometry x="90" y="251" width="50" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-11" value="GET&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;/api/dnd/creature&lt;/span&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/templates&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="84bn8cSFGzSLBoDjGc9c-6">
+          <mxGeometry x="90" y="329" width="50" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-12" value="GET&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;/api/dnd/creature&lt;/span&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/template&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="84bn8cSFGzSLBoDjGc9c-6">
+          <mxGeometry x="90" y="406" width="50" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-13" value="api-equipment-reader&#xa;" style="swimlane;startSize=0;" vertex="1" parent="1">
+          <mxGeometry x="140" y="540" width="240" height="660" as="geometry" />
+        </mxCell>
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-14" value="GET&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/api/dnd/equipment&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve; background-color: rgb(255, 255, 255);&quot;&gt;/creature-weapon-list&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="84bn8cSFGzSLBoDjGc9c-13">
+          <mxGeometry x="87.5" y="570" width="50" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-15" value="GET&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/api/dnd/equipment&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve; background-color: rgb(255, 255, 255);&quot;&gt;/creature-weapon-proficiency&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="84bn8cSFGzSLBoDjGc9c-13">
+          <mxGeometry x="87.5" y="490" width="50" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-16" value="GET&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;/api/dnd/&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve; color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt;&quot;&gt;equipment&lt;/span&gt;&lt;span style=&quot;white-space-collapse: preserve; font-family: Consolas; font-size: 10pt;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/creature-armor-proficiency&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="84bn8cSFGzSLBoDjGc9c-13">
+          <mxGeometry x="87.5" y="330" width="50" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="84bn8cSFGzSLBoDjGc9c-13" source="84bn8cSFGzSLBoDjGc9c-18" target="84bn8cSFGzSLBoDjGc9c-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-18" value="GET&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/api/dnd/equipment&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve; background-color: rgb(255, 255, 255);&quot;&gt;/creature-armor-list&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="84bn8cSFGzSLBoDjGc9c-13">
+          <mxGeometry x="87.5" y="410" width="50" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-19" value="GET&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;/api/dnd/equipment&lt;/span&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/armor-list&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="84bn8cSFGzSLBoDjGc9c-13">
+          <mxGeometry x="87.5" y="10" width="50" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-20" value="GET&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;/api/dnd/equipment&lt;/span&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/armor&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="84bn8cSFGzSLBoDjGc9c-13">
+          <mxGeometry x="87.5" y="91.20000000000005" width="50" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-21" value="GET&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;/api/dnd/equipment&lt;/span&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/weapon-list&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="84bn8cSFGzSLBoDjGc9c-13">
+          <mxGeometry x="87.5" y="168" width="50" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-22" value="GET&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color:#ffffff;padding:0px 0px 0px 2px;&quot;&gt;&lt;span style=&quot;color: rgb(42, 0, 255); font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;/api/dnd/equipment&lt;/span&gt;&lt;span style=&quot;font-family: Consolas; font-size: 10pt; white-space-collapse: preserve;&quot;&gt;&lt;span style=&quot;color:#2a00ff;&quot;&gt;/weapon&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="84bn8cSFGzSLBoDjGc9c-13">
+          <mxGeometry x="87.5" y="250" width="50" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="84bn8cSFGzSLBoDjGc9c-23" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="50" y="480" as="sourcePoint" />
-            <mxPoint x="210" y="280" as="targetPoint" />
+            <mxPoint x="40" y="580" as="sourcePoint" />
+            <mxPoint x="130" y="850" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="50" y="280" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-21" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="50" y="510" as="sourcePoint" />
-            <mxPoint x="210" y="280" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="50" y="280" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-22" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;" edge="1" parent="1" target="Xx4moLNGxco_7giCoUWo-7">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="60" y="510" as="sourcePoint" />
-            <mxPoint x="220" y="290" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="60" y="355" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-23" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;entryX=-0.02;entryY=0.458;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="Xx4moLNGxco_7giCoUWo-8">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="70" y="520" as="sourcePoint" />
-            <mxPoint x="200" y="430" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="80" y="520" />
-              <mxPoint x="80" y="430" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-24" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;entryX=0;entryY=0.708;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="Xx4moLNGxco_7giCoUWo-10">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="70" y="530" as="sourcePoint" />
-            <mxPoint x="200" y="520" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="100" y="530" />
-              <mxPoint x="100" y="520" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-25" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;entryX=0;entryY=0.708;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="70" y="550" as="sourcePoint" />
-            <mxPoint x="210" y="590" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="100" y="550" />
-              <mxPoint x="100" y="590" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-26" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="70" y="560" as="sourcePoint" />
-            <mxPoint x="210" y="670" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="80" y="560" />
-              <mxPoint x="80" y="670" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-27" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="60" y="510" as="sourcePoint" />
-            <mxPoint x="210" y="355" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="60" y="355" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-28" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="60" y="570" as="sourcePoint" />
-            <mxPoint x="210" y="750" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="60" y="750" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-29" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="50" y="570" as="sourcePoint" />
-            <mxPoint x="210" y="820" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="50" y="820" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-30" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;entryX=0.005;entryY=0.63;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="40" y="570" as="sourcePoint" />
-            <mxPoint x="210" y="904" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="40" y="904" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-31" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="30" y="570" as="sourcePoint" />
-            <mxPoint x="210" y="980" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="30" y="980" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-32" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;entryX=0.005;entryY=0.63;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="20" y="570" as="sourcePoint" />
-            <mxPoint x="210" y="1060" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="20" y="1060" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-34" value="" style="swimlane;startSize=0;" vertex="1" parent="1">
-          <mxGeometry x="120" y="20" width="240" height="1100" as="geometry" />
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-35" value="" style="swimlane;startSize=0;" vertex="1" parent="Xx4moLNGxco_7giCoUWo-34">
-          <mxGeometry y="320" width="240" height="780" as="geometry" />
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-36" value="" style="swimlane;startSize=0;" vertex="1" parent="Xx4moLNGxco_7giCoUWo-35">
-          <mxGeometry y="460" width="240" height="320" as="geometry" />
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-37" value="" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/databases/Azure_Database_PostgreSQL_Server.svg;" vertex="1" parent="1">
-          <mxGeometry x="480" y="519.2" width="48" height="64" as="geometry" />
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-39" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;exitX=1.013;exitY=0.019;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Xx4moLNGxco_7giCoUWo-34" target="Xx4moLNGxco_7giCoUWo-37">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="390" y="40" as="sourcePoint" />
-            <mxPoint x="580" y="530" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="520" y="41" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-40" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;exitX=1.013;exitY=0.019;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" target="Xx4moLNGxco_7giCoUWo-37">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="357" y="120" as="sourcePoint" />
-            <mxPoint x="494" y="598" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="510" y="120" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-41" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;exitX=1.013;exitY=0.019;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" target="Xx4moLNGxco_7giCoUWo-37">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="360" y="200" as="sourcePoint" />
-            <mxPoint x="497" y="678" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="500" y="200" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-42" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;exitX=1.013;exitY=0.019;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" target="Xx4moLNGxco_7giCoUWo-37">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="360" y="280" as="sourcePoint" />
-            <mxPoint x="497" y="758" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="490" y="280" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-43" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;exitX=1.013;exitY=0.019;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" target="Xx4moLNGxco_7giCoUWo-37">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="360" y="360" as="sourcePoint" />
-            <mxPoint x="497" y="838" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="470" y="360" />
-              <mxPoint x="470" y="530" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-44" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;exitX=1.013;exitY=0.019;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" target="Xx4moLNGxco_7giCoUWo-37">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="360" y="442" as="sourcePoint" />
-            <mxPoint x="480" y="612" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="460" y="442" />
-              <mxPoint x="460" y="540" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-45" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;exitX=1.013;exitY=0.019;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" target="Xx4moLNGxco_7giCoUWo-37">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="365" y="519.2" as="sourcePoint" />
-            <mxPoint x="485" y="689.2" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="450" y="519" />
-              <mxPoint x="450" y="550" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-46" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;exitX=1.013;exitY=0.019;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" target="Xx4moLNGxco_7giCoUWo-37">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="360" y="600" as="sourcePoint" />
-            <mxPoint x="480" y="770" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="450" y="600" />
-              <mxPoint x="450" y="560" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-47" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;exitX=1.013;exitY=0.019;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" target="Xx4moLNGxco_7giCoUWo-37">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="360" y="670" as="sourcePoint" />
-            <mxPoint x="480" y="630" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="460" y="670" />
-              <mxPoint x="460" y="570" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-48" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;exitX=1.013;exitY=0.019;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" target="Xx4moLNGxco_7giCoUWo-37">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="360" y="750" as="sourcePoint" />
-            <mxPoint x="480" y="710" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="470" y="750" />
-              <mxPoint x="470" y="580" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-49" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;exitX=1.013;exitY=0.019;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" target="Xx4moLNGxco_7giCoUWo-37">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="360" y="820" as="sourcePoint" />
-            <mxPoint x="480" y="650" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="490" y="820" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-50" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;exitX=1.013;exitY=0.019;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" target="Xx4moLNGxco_7giCoUWo-37">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="360" y="897" as="sourcePoint" />
-            <mxPoint x="490" y="660" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="500" y="897" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-51" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;exitX=1.013;exitY=0.019;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" target="Xx4moLNGxco_7giCoUWo-37">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="360" y="978" as="sourcePoint" />
-            <mxPoint x="500" y="664" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="510" y="978" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="Xx4moLNGxco_7giCoUWo-52" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;exitX=1.013;exitY=0.019;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.854;entryY=0.981;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="Xx4moLNGxco_7giCoUWo-37">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="360" y="1064" as="sourcePoint" />
-            <mxPoint x="500" y="750" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="521" y="1064" />
+              <mxPoint x="40" y="850" />
             </Array>
           </mxGeometry>
         </mxCell>
