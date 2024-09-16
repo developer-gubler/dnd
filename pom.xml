@@ -31,10 +31,10 @@
 	</developers>
 
 	<modules>
-		<module>dnd-persistence</module>
-		<module>api-creature-reader</module>
-		<module>api-equipment-reader</module>
-		<module>api-reader</module>
+		<module>backend/java/dnd-persistence</module>
+		<module>backend/java/api-creature-reader</module>
+		<module>backend/java/api-equipment-reader</module>
+		<module>backend/java/api-reader</module>
 	</modules>
 
 </project>

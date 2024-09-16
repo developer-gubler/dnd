@@ -71,3 +71,6 @@ Future Features:
 	- Creating battles associated with an account
 	- Create UI/UX for the battle application
 3) Add additional testing style for Behavior Driven Development (BDD) leveraging Cucumber
+
+Challenges:
+1) Testing of the Model layer (ie database layer) in the dnd-persistence project has proven to be problematic due to it using Reactive programming - the DataJpaTest annotation in the Test classes do not appear to work as cohesively as it does with non-reactive programming.  Granted, the repository classes don't have anything extra in them at this point, so it is just the simple CRUD operations that JPA itself is providing (ie this is really generic).  As a result, I am not too concerned and have @Disabled all of the test classes in dnd-persistence, but it is still less than optimal.
