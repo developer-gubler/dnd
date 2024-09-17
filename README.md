@@ -60,8 +60,11 @@ Current Features:
 
 Future Features:
 1) Simplify Maven build structure
-1) Creating a UI/UX for the reader application
-2) Add battle application
+2) Swagger
+3) GraphQL
+4) Kubernetes (K8s)
+5) Creating a UI/UX for the reader application
+6) Add battle application
 	- Event Driven Architecture (EDA). Loose-coupling via Kafka/RabbitMQ. Loose-coupling is best utilized in situations where there are limited resources - in this case, hit points will be the resource that is limited.
 	- Observability
 	- Registering an account
@@ -70,7 +73,7 @@ Future Features:
 	- Adding players to an account
 	- Creating battles associated with an account
 	- Create UI/UX for the battle application
-3) Add additional testing style for Behavior Driven Development (BDD) leveraging Cucumber
+7) Add additional testing style for Behavior Driven Development (BDD) leveraging Cucumber
 
 Challenges:
 1) Testing of the Model layer (ie database layer) in the dnd-persistence project has proven to be problematic due to it using Reactive programming - the DataJpaTest annotation in the Test classes do not appear to work as cohesively as it does with non-reactive programming.  Granted, the repository classes don't have anything extra in them at this point, so it is just the simple CRUD operations that JPA itself is providing (ie this is really generic).  As a result, I am not too concerned and have @Disabled all of the test classes in dnd-persistence, but it is still less than optimal.
