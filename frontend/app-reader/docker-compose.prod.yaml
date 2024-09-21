@@ -1,0 +1,14 @@
+version: “3.7”
+name: dnd 
+services:
+  app-reader:
+    build: .
+    container_name: app-reader
+    volumes:
+      - .:/usr/src/app
+    command: /bin/bash -c "npm i && npm build"
+    networks:
+      - dnd_network
+networks:
+  dnd_network:
+    external: true
